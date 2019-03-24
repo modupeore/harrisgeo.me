@@ -1,0 +1,5 @@
+export const mobile = "768px"
+export const tablet = "992px"
+export const spacingXS = "10px"
+export const spacing = "20px"
+export const spacingLG = "40px"
