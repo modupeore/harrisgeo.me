@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
+import { Link } from "react-scroll"
 
 const spacing = "10px"
 
 export const Wrapper = styled.div`
+  position: fixed;
+  z-index: 2;
+  width: 100%;
   display: flex;
   background: #333;
 `
@@ -15,25 +19,31 @@ export const Left = styled.div`
 `
 
 export const Right = styled.div`
-  display: flex;
+  display: ${props => (props.show ? "flex" : "none")};
   justify-content: flex-end;
 `
 
-export const Item = styled.a`
+export const Item = styled(Link)`
   color: #eee;
   margin: ${spacing};
   text-decoration: none;
   cursor: pointer;
 `
 
-export const Navbar = () => (
+const goHome = () => {
+  document.location.href = "/"
+}
+
+export const Navbar = ({ isLandingPage = true }) => (
   <Wrapper>
     <Left>
-      <Item href="/">HG</Item>
+      <Item to="" onClick={goHome}>
+        HG
+      </Item>
     </Left>
-    <Right>
-      <Item href="#projects">Projects</Item>
-      <Item href="#posts">Posts</Item>
+    <Right show={isLandingPage}>
+      <Item to="home">Home</Item>
+      <Item to="blog">Posts</Item>
     </Right>
   </Wrapper>
 )

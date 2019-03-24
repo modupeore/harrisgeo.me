@@ -5,7 +5,7 @@ import { Layout, Container } from "../components/layout"
 export default function Template({ data }) {
   const { markdownRemark: post } = data
   return (
-    <Layout>
+    <Layout isLandingPage={false}>
       <Container>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />

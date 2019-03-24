@@ -1,7 +1,14 @@
 import React from "react"
 import styled from "styled-components"
 import { Navbar } from "./Navbar"
-import { spacing, mobile, tablet } from "./tokens"
+import {
+  spacing,
+  spacingL,
+  spacingXl,
+  spacing3Xl,
+  mobile,
+  tablet,
+} from "./tokens"
 
 export const Body = styled.div`
   position: absolute;
@@ -9,6 +16,21 @@ export const Body = styled.div`
   top: 0px;
   font-family: "Montserrat", sans-serif;
   width: 100%;
+  height: 100%;
+`
+
+export const Container = styled.div`
+  padding: ${spacingXl};
+  height: calc(100% - ${spacing3Xl});
+  min-height: 100%;
+
+  @media screen and (max-width: ${mobile}) {
+    padding: ${spacingL} ${spacing};
+  }
+
+  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+    padding: ${spacingL};
+  }
 `
 
 export const Section = styled.div`
@@ -22,17 +44,9 @@ export const Section = styled.div`
 export const Link = styled.a`
   color: black;
   font-weight: 500;
-`
 
-export const Container = styled.div`
-  padding: 60px;
-
-  @media screen and (max-width: ${mobile}) {
-    padding: ${spacing};
-  }
-
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    padding: 40px;
+  &:hover {
+    color: #00b3b0;
   }
 `
 
@@ -77,7 +91,7 @@ export const H1 = styled.div`
   width: 100%;
   text-align: center;
   font-weight: 500;
-  font-size: 50px;
+  font-size: 50pt;
   margin-bottom: 30px;
 
   @media screen and (max-width: ${mobile}) {
@@ -96,9 +110,9 @@ export const Img = props => (
   </div>
 )
 
-export const Layout = ({ children }) => (
+export const Layout = ({ children, isLandingPage = true }) => (
   <Body>
-    <Navbar />
+    <Navbar isLandingPage={isLandingPage} />
     {children}
   </Body>
 )

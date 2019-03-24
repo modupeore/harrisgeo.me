@@ -1,14 +1,13 @@
 import React from "react"
-import Posts from "./posts"
+import Blog from "./blog"
 import Main from "./main"
-import Projects from "./projects"
 import { Layout } from "../components/layout"
 
 const IndexPage = () => {
   return (
     <Layout>
       <Main />
-      <Posts />
+      <Blog />
     </Layout>
   )
 }
