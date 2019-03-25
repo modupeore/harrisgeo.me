@@ -1,14 +1,5 @@
-import React from "react"
 import styled from "styled-components"
-import { Navbar } from "./navbar"
-import {
-  spacing,
-  spacingL,
-  spacingXl,
-  spacing3Xl,
-  mobile,
-  tablet,
-} from "./tokens"
+import { spacing, spacingXl, spacing3Xl, mobile, tablet } from "../tokens"
 
 export const Body = styled.div`
   position: absolute;
@@ -22,14 +13,16 @@ export const Body = styled.div`
 export const Container = styled.div`
   padding: ${spacingXl};
   height: calc(100% - ${spacing3Xl});
-  min-height: 100%;
 
   @media screen and (max-width: ${mobile}) {
-    padding: ${spacingL} ${spacing};
+    margin: auto;
+    width: 300px;
+    padding-top: ${spacing3Xl};
+    height: calc(100% - ${spacing3Xl});
   }
 
   @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    padding: ${spacingL};
+    padding: ${spacingXl};
   }
 `
 
@@ -58,7 +51,7 @@ export const Wrapper = styled.div`
   }
 `
 
-const Image = styled.img`
+export const Image = styled.img`
   border-radius: 3px;
   border: 1px solid grey;
   height: 300px;
@@ -103,16 +96,3 @@ export const Row = styled.div`
   width: 100%;
   text-align: center;
 `
-
-export const Img = props => (
-  <div>
-    <Image {...props} />
-  </div>
-)
-
-export const Layout = ({ children, isLandingPage = true }) => (
-  <Body>
-    <Navbar isLandingPage={isLandingPage} />
-    {children}
-  </Body>
-)
