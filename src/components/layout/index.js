@@ -6,7 +6,8 @@ export {
   Link,
   Wrapper,
   Image,
-  P,
+  Bio,
+  Box,
   H1,
   Row,
 } from "./layout.styles"

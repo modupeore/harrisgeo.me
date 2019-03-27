@@ -11,24 +11,26 @@ export const Body = styled.div`
 `
 
 export const Container = styled.div`
-  padding: ${spacingXl};
+  position: sticky;
+  margin: ${spacingXl} auto;
+  width: 800px;
   height: calc(100% - ${spacing3Xl});
 
   @media screen and (max-width: ${mobile}) {
     margin: auto;
-    width: 300px;
+    width: 350px;
     padding-top: ${spacing3Xl};
+    padding-left: ${spacing}
+    padding-right: ${spacing}
     height: calc(100% - ${spacing3Xl});
   }
 
   @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    padding: ${spacingXl};
   }
 `
 
 export const Section = styled.div`
   position: relative;
-  width: 100%;
   height: 100%;
   background: red;
   border-top: 2px solid white;
@@ -65,19 +67,19 @@ export const Image = styled.img`
   }
 `
 
-export const P = styled.div`
+export const Bio = styled.p`
   margin: 0;
   padding: 0 ${spacing};
-  font-size: 24pt;
-
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
-    font-size: 20pt;
-  }
+  font-size: 20pt;
 
   @media screen and (max-width: ${mobile}) {
     font-size: 16pt;
     margin-top: ${spacing};
   }
+`
+
+export const Box = styled.div`
+  padding: 20px 0;
 `
 
 export const H1 = styled.div`

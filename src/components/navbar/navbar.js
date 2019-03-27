@@ -1,5 +1,6 @@
 import React from "react"
 import { Wrapper, Left, Item, Right } from "./"
+import { animateScroll as scroll } from "react-scroll"
 
 const goHome = () => {
   document.location.href = "/"
@@ -13,8 +14,10 @@ export const Navbar = ({ isLandingPage = true }) => (
       </Item>
     </Left>
     <Right show={isLandingPage}>
-      <Item to="home">Home</Item>
-      <Item to="blog">Posts</Item>
+      <Item onClick={() => scroll.scrollToTop()}>Home</Item>
+      <Item to="blog" smooth={true}>
+        Blog
+      </Item>
     </Right>
   </Wrapper>
 )
