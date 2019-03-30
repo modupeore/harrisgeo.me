@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { Link } from "react-scroll"
 
 const spacing = "10px"
 
@@ -22,9 +21,10 @@ export const Right = styled.div`
   justify-content: flex-end;
 `
 
-export const Item = styled(Link)`
+export const Item = styled.a`
   color: #eee;
   margin: ${spacing};
   text-decoration: none;
   cursor: pointer;
+  scroll-behavior: smooth;
 `
