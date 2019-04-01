@@ -1,14 +1,19 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Layout, Container } from "../components/layout"
+import { Layout, Container, H1 } from "../components/layout"
+import styled from "styled-components"
+
+const PostContainer = styled.div`
+  margin: 50px 0;
+`
 
 export default function Template({ data }) {
   const { markdownRemark: post } = data
   return (
     <Layout isLandingPage={false}>
       <Container>
-        <h1>{post.frontmatter.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <H1>{post.frontmatter.title}</H1>
+        <PostContainer dangerouslySetInnerHTML={{ __html: post.html }} />
       </Container>
     </Layout>
   )
