@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 const spacing = "10px"
 
-export const Wrapper = styled.div`
+export const NavbarWrapper = styled.div`
   position: fixed;
   z-index: 2;
   width: 100%;

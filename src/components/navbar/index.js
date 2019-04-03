@@ -1,2 +1,2 @@
 export { Navbar } from "./navbar"
-export { Wrapper, Left, Item, Right } from "./navbar.styles"
+export { NavbarWrapper, Left, Item, Right } from "./navbar.styles"

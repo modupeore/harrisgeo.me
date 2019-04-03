@@ -1,5 +1,15 @@
 import styled from "styled-components"
-import { spacing, spacingXl, spacing3Xl, mobile, tablet } from "../tokens"
+import {
+  spacing,
+  spacingXl,
+  spacing3Xl,
+  mobile,
+  tablet,
+  imageY,
+  imageX,
+  imageYMob,
+  imageXMob,
+} from "../tokens"
 
 export const Body = styled.div`
   position: absolute;
@@ -48,22 +58,28 @@ export const Link = styled.a`
 export const Wrapper = styled.div`
   display: flex;
 
+  @media all and (min-width: ${mobile}) {
+    position: absolute;
+    top: calc(50% - 150px);
+  }
+
   @media all and (max-width: ${mobile}) {
     display: block;
   }
 `
 
+// TODO: make a function for doing token calculations
 export const Image = styled.img`
   border-radius: 3px;
   border: 1px solid grey;
-  height: 300px;
-  width: 375px;
+  height: ${imageY};
+  width: ${imageX};
 
   @media all and (max-width: ${mobile}) {
     position: relative;
-    left: calc(50% - 93.75px);
-    height: 150px;
-    width: 187.5px;
+    left: calc(50% - 100px);
+    height: ${imageYMob};
+    width: ${imageXMob};
   }
 `
 
