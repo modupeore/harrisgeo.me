@@ -19,7 +19,7 @@ const Main = () => (
       <Img src={MeSnow} />
       <Bio>
         I am a Full stack developer. I have been working with <b>React</b>
-        ,&nbsp; <b>Node.js</b>,&nbsp;
+        ,&nbsp; <b>Node.js</b> and&nbsp;
         <b>Typescript </b> for the last 6+ years.
         <Box>
           Now working @&nbsp;
