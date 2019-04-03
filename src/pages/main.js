@@ -9,9 +9,11 @@ import {
   Container,
 } from "../components/layout"
 import MeSnow from "../images/me-snow.jpg"
+import Helmet from "react-helmet"
 
 const Main = () => (
   <Container>
+    <Helmet title="Harris Geo" defer={false} />
     <H1 id="home">HARRIS GEO</H1>
     <Wrapper>
       <Img src={MeSnow} />
