@@ -2,6 +2,7 @@ import styled from "styled-components"
 import {
   spacing,
   spacingXl,
+  spacing2Xl,
   spacing3Xl,
   mobile,
   tablet,
@@ -29,10 +30,10 @@ export const Container = styled.div`
   @media screen and (max-width: ${mobile}) {
     margin: auto;
     width: 350px;
-    padding-top: ${spacing3Xl};
+    padding-top: ${spacing2Xl};
     padding-left: ${spacing}
     padding-right: ${spacing}
-    height: calc(100% - ${spacing3Xl});
+    height: calc(100% - ${spacing2Xl});
   }
 
   @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
