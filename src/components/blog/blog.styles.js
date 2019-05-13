@@ -1,14 +1,19 @@
 import styled from "styled-components"
 import { mobile } from "../tokens"
 
-export const Block = styled.div`
+export const Block = styled.button`
   height: 100px;
   width: calc(100% - 20px);
   margin: 10px 0;
   padding: 10px;
+  text-align: left;
+  font-family: "Montserrat", sans-serif;
+  background-color: white;
+  border: 0;
+  cursor: pointer;
 `
 
-export const Title = styled.a`
+export const Title = styled.div`
   color: black;
   text-decoration: none;
   font-size: 24px;

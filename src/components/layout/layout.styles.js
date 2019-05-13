@@ -84,7 +84,7 @@ export const Image = styled.img`
   }
 `
 
-export const Bio = styled.p`
+export const Bio = styled.div`
   margin: 0;
   padding: 0 ${spacing};
   font-size: 20pt;

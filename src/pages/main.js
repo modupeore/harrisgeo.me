@@ -24,7 +24,7 @@ const Main = () => (
         <Box>
           Now working @&nbsp;
           <Link href="https://www.fairfx.com/" target="_blank">
-            FairFx
+            FairFX
           </Link>
         </Box>
         <Box>

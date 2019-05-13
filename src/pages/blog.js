@@ -24,13 +24,17 @@ const Blog = () => {
     `
   )
 
+  const handleClick = node => {
+    document.location.href = node.frontmatter.path
+  }
+
   return (
     <Container>
       <H1 id="blog">BLOG</H1>
       {allMarkdownRemark.edges.map(({ node }, i) => {
         return (
-          <Block key={i}>
-            <Title href={node.frontmatter.path}>{node.frontmatter.title}</Title>
+          <Block key={i} onClick={() => handleClick(node)}>
+            <Title>{node.frontmatter.title}</Title>
             <Description>{node.frontmatter.description}</Description>
             <Date>{node.frontmatter.date}</Date>
           </Block>
