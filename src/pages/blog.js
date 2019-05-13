@@ -7,13 +7,11 @@ const Blog = () => {
   const { allMarkdownRemark } = useStaticQuery(
     graphql`
       {
-        allMarkdownRemark(
-          sort: { order: DESC, fields: [frontmatter___date] }
-          limit: 1000
-        ) {
+        allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
           edges {
             node {
               frontmatter {
+                id
                 path
                 title
                 description
