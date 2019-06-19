@@ -15,7 +15,7 @@ export const Layout = ({ children, isLandingPage = true }) => {
 
   return (
     <Body>
-      <Navbar onClick={() => goto("/")} title="HG">
+      <Navbar onTitleClick={() => goto("/")} title="HG">
         <NavItem onClick={() => goto("#")}>Home</NavItem>
         <NavItem onClick={() => goto("#blog")}>Blog</NavItem>
       </Navbar>
