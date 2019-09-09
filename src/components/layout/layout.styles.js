@@ -93,6 +93,9 @@ export const Bio = styled.div`
     font-size: 16pt;
     margin-top: ${spacing};
   }
+  > p {
+    margin: 0;
+  }
 `
 
 export const Box = styled.div`
