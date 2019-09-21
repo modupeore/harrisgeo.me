@@ -3,37 +3,19 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Container, H1 } from "../components/layout"
 import { Block, Title, Description, Date } from "../components/blog"
 
-const Blog = ({ title }) => {
-  const { allMarkdownRemark } = useStaticQuery(
-    graphql`
-      {
-        allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
-          edges {
-            node {
-              frontmatter {
-                id
-                path
-                title
-                description
-                date
-              }
-            }
-          }
-        }
-      }
-    `
-  )
+const Blog = ({ title, dark }) => {
+  const { allMarkdownRemark } = useStaticQuery(blogQuery)
 
   const handleClick = node => {
     document.location.href = node.frontmatter.path
   }
 
   return (
-    <Container>
-      <H1 id="blog">{title}</H1>
+    <Container dark={dark} id="blog">
+      <H1>{title}</H1>
       {allMarkdownRemark.edges.map(({ node }, i) => {
         return (
-          <Block key={i} onClick={() => handleClick(node)}>
+          <Block key={i} onClick={() => handleClick(node)} dark={dark}>
             <Title>{node.frontmatter.title}</Title>
             <Description>{node.frontmatter.description}</Description>
             <Date>{node.frontmatter.date}</Date>
@@ -43,5 +25,23 @@ const Blog = ({ title }) => {
     </Container>
   )
 }
+
+export const blogQuery = graphql`
+  {
+    allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
+      edges {
+        node {
+          frontmatter {
+            id
+            path
+            title
+            description
+            date
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Blog

@@ -8,13 +8,13 @@ export const Block = styled.button`
   padding: 10px;
   text-align: left;
   font-family: "Montserrat", sans-serif;
-  background-color: white;
+  background-color: ${props => (props.dark ? "#000" : "#fff")};
+  color: ${props => (props.dark ? "#fff" : "#000")};
   border: 0;
   cursor: pointer;
 `
 
 export const Title = styled.div`
-  color: black;
   text-decoration: none;
   font-size: 24px;
 

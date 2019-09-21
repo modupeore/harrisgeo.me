@@ -1,13 +1,15 @@
-export { Layout, Img } from "./layout"
+export { ProfilePhoto } from "./image"
+export { Layout } from "./layout"
 export {
-  Body,
-  Container,
-  Section,
-  Link,
-  Wrapper,
-  Image,
   Bio,
+  Body,
   Box,
+  Container,
+  Frame,
   H1,
+  Icon,
+  Link,
   Row,
+  Section,
+  Wrapper,
 } from "./layout.styles"

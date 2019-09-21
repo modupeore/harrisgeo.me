@@ -5,12 +5,25 @@ import {
   spacing2Xl,
   spacing3Xl,
   mobile,
-  tablet,
   imageY,
   imageX,
   imageYMob,
   imageXMob,
 } from "../tokens"
+import { layout, space } from "styled-system"
+// TODO: use styled system instead of tokens
+
+export const Frame = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: ${props => (props.dark ? "#000" : "#fff")};
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  scroll-behaviour: smooth;
+`
 
 export const Body = styled.div`
   position: absolute;
@@ -19,6 +32,7 @@ export const Body = styled.div`
   font-family: "Montserrat", sans-serif;
   width: 100%;
   height: 100%;
+  color: ${props => (props.dark ? "#fff" : "#000")};
 `
 
 export const Container = styled.div`
@@ -26,7 +40,7 @@ export const Container = styled.div`
   margin: ${spacingXl} auto;
   width: 800px;
   height: calc(100% - ${spacing3Xl});
-
+  background: ${props => (props.dark ? "#000" : "#fff")};
   @media screen and (max-width: ${mobile}) {
     margin: auto;
     width: 350px;
@@ -34,9 +48,6 @@ export const Container = styled.div`
     padding-left: ${spacing}
     padding-right: ${spacing}
     height: calc(100% - ${spacing2Xl});
-  }
-
-  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
   }
 `
 
@@ -48,7 +59,7 @@ export const Section = styled.div`
 `
 
 export const Link = styled.a`
-  color: black;
+  color: ${props => (props.dark ? "#eee" : "#000")};
   font-weight: 500;
 
   &:hover {
@@ -67,6 +78,11 @@ export const Wrapper = styled.div`
   @media all and (max-width: ${mobile}) {
     display: block;
   }
+`
+
+export const Icon = styled.img`
+  ${layout}
+  ${space}
 `
 
 // TODO: make a function for doing token calculations

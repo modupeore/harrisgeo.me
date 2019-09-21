@@ -1,6 +1,6 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import { Layout, Container, H1 } from "../components/layout"
+import { Layout, Container, H1, Frame } from "../components/layout"
 import styled from "styled-components"
 import Helmet from "react-helmet"
 
@@ -8,23 +8,43 @@ const PostContainer = styled.div`
   margin: 50px 0;
 `
 
-export default function Template({ data }) {
-  const { markdownRemark: post } = data
-  return (
-    <Layout isLandingPage={false}>
-      <Helmet title={`Harris Geo - ${post.frontmatter.title}`} defer={false} />
+const Template = ({ data }) => {
+  const [darkMode, setDarkMode] = useState(false)
 
-      <Container>
-        <H1>{post.frontmatter.title}</H1>
-        <PostContainer dangerouslySetInnerHTML={{ __html: post.html }} />
-      </Container>
-    </Layout>
+  useEffect(() => {
+    setDarkMode(window.localStorage.getItem("dark") === "true" ? true : false)
+  }, [])
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode)
+    window.localStorage.setItem("dark", !darkMode)
+  }
+  const { blog, prismic } = data
+
+  const navData = {
+    brand: "Back",
+    sun: prismic.data.nav_icon_light.url,
+    moon: prismic.data.nav_icon_dark.url,
+  }
+  return (
+    <Frame dark={darkMode}>
+      <Layout {...navData} dark={darkMode} toggleDarkMode={toggleDarkMode}>
+        <Container dark={darkMode}>
+          <Helmet
+            title={`Harris Geo - ${blog.frontmatter.title}`}
+            defer={false}
+          />
+          <H1>{blog.frontmatter.title}</H1>
+          <PostContainer dangerouslySetInnerHTML={{ __html: blog.html }} />
+        </Container>
+      </Layout>
+    </Frame>
   )
 }
 
 export const postQuery = graphql`
-  query($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query($path: String) {
+    blog: markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
       frontmatter {
         date
@@ -32,5 +52,17 @@ export const postQuery = graphql`
         title
       }
     }
+    prismic: prismicTitle {
+      data {
+        nav_icon_dark {
+          url
+        }
+        nav_icon_light {
+          url
+        }
+      }
+    }
   }
 `
+
+export default Template

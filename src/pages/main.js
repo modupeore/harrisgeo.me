@@ -1,12 +1,13 @@
 import React from "react"
 import {
   Wrapper,
-  Img,
+  ProfilePhoto,
   H1,
   Bio,
   Box,
   Link,
   Container,
+  Icon,
 } from "../components/layout"
 import { Parser } from "html-to-react"
 import Helmet from "react-helmet"
@@ -15,39 +16,55 @@ const parser = new Parser()
 
 const Main = props => {
   const {
-    title,
     bio,
     currentJob,
     currentJobLink,
     currentJobLinkText,
+    dark,
     github,
     githubText,
+    githubImgDark,
+    githubImgLight,
+    profilePhoto,
+    title,
     twitter,
     twitterText,
-    profilePhoto,
+    twitterImgDark,
+    twitterImgLight,
   } = props
 
   return (
-    <Container>
+    <Container dark={dark} id="home">
       <Helmet title="Harris Geo" defer={false} />
-      <H1 id="home">{title}</H1>
+      <H1>{title}</H1>
       <Wrapper>
-        <Img src={profilePhoto} />
+        <ProfilePhoto src={profilePhoto} />
         <Bio>
           {parser.parse(bio)}
           <Box>
             {currentJob}
-            <Link href={currentJobLink} target="_blank">
+            <Link href={currentJobLink} target="_blank" dark={dark}>
               {currentJobLinkText}
             </Link>
           </Box>
           <Box>
-            <Link href={github} target="_blank">
-              {githubText}
+            <Link href={github} target="_blank" dark={dark}>
+              <Icon
+                src={dark ? githubImgLight : githubImgDark}
+                alt={githubText}
+                width={25}
+                height={25}
+                mr={10}
+              />
             </Link>
-            &nbsp;-&nbsp;
-            <Link href={twitter} target="_blank">
-              {twitterText}
+            <Link href={twitter} target="_blank" dark={dark}>
+              <Icon
+                src={dark ? twitterImgLight : twitterImgDark}
+                alt={twitterText}
+                width={25}
+                height={25}
+                ml={10}
+              />
             </Link>
           </Box>
         </Bio>
