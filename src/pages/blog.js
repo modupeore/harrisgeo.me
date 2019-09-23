@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, navigate } from "gatsby"
 import { Container, H1 } from "../components/layout"
 import { Block, Title, Description, Date } from "../components/blog"
 
@@ -7,7 +7,7 @@ const Blog = ({ title, dark }) => {
   const { allMarkdownRemark } = useStaticQuery(blogQuery)
 
   const handleClick = node => {
-    document.location.href = node.frontmatter.path
+    navigate(node.frontmatter.path)
   }
 
   return (

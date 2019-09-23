@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { Layout, Container, H1, Frame } from "../components/layout"
 import styled from "styled-components"
@@ -9,11 +9,8 @@ const PostContainer = styled.div`
 `
 
 const Template = ({ data }) => {
-  const [darkMode, setDarkMode] = useState(false)
-
-  useEffect(() => {
-    setDarkMode(window.localStorage.getItem("dark") === "true" ? true : false)
-  }, [])
+  const dark = window.localStorage.getItem("dark") === "true" ? true : false
+  const [darkMode, setDarkMode] = useState(dark)
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)

@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Blog from "./blog"
 import Main from "./main"
 import { Layout, Frame } from "../components/layout"
 
 const IndexPage = props => {
-  const [darkMode, setDarkMode] = useState(false)
-  useEffect(() => {
-    setDarkMode(window.localStorage.getItem("dark") === "true" ? true : false)
-  }, [])
+  const dark = window.localStorage.getItem("dark") === "true" ? true : false
+  const [darkMode, setDarkMode] = useState(dark)
 
   const {
     data: {
@@ -51,7 +49,7 @@ const IndexPage = props => {
   }
 
   return (
-    <Frame dark={darkMode}>
+    <Frame dark={darkMode} id="home">
       <Layout {...dataMap.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Main {...dataMap.main} dark={darkMode} />
         <Blog {...dataMap.blog} dark={darkMode} />

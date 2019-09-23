@@ -1,6 +1,7 @@
 import React, { Fragment } from "react"
 import { Body, Icon } from "./layout.styles"
 import { Navbar, NavItem } from "swag-components"
+import { navigate } from "gatsby"
 
 export const Layout = ({
   children,
@@ -14,7 +15,7 @@ export const Layout = ({
   toggleDarkMode = null,
 }) => {
   const goto = (url = "") => {
-    document.location.href = url
+    navigate(url)
   }
 
   return (
