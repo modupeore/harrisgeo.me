@@ -108,6 +108,7 @@ export const Bio = styled.div`
   @media screen and (max-width: ${mobile}) {
     font-size: 16pt;
     margin-top: ${spacing};
+    text-align: center;
   }
   > p {
     margin: 0;
