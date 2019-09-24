@@ -3,18 +3,18 @@ import { graphql } from "gatsby"
 import { Layout, Container, H1, Frame } from "../components/layout"
 import styled from "styled-components"
 import Helmet from "react-helmet"
+import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 
 const PostContainer = styled.div`
   margin: 50px 0;
 `
 
 const Template = ({ data }) => {
-  const dark = window.localStorage.getItem("dark") === "true" ? true : false
-  const [darkMode, setDarkMode] = useState(dark)
+  const [darkMode, setDarkMode] = useState(getDarkValue())
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
-    window.localStorage.setItem("dark", !darkMode)
+    setDarkValue(!darkMode)
   }
   const { blog, prismic } = data
 

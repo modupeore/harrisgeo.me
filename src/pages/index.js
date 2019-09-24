@@ -2,12 +2,11 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import Blog from "./blog"
 import Main from "./main"
+import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { Layout, Frame } from "../components/layout"
 
 const IndexPage = props => {
-  const dark = window.localStorage.getItem("dark") === "true" ? true : false
-  const [darkMode, setDarkMode] = useState(dark)
-
+  const [darkMode, setDarkMode] = useState(getDarkValue())
   const {
     data: {
       prismicTitle: { data },
@@ -44,12 +43,13 @@ const IndexPage = props => {
   }
 
   const toggleDarkMode = () => {
+    console.log({ darkMode })
+    setDarkValue(!darkMode)
     setDarkMode(!darkMode)
-    window.localStorage.setItem("dark", !darkMode)
   }
 
   return (
-    <Frame dark={darkMode} id="home">
+    <Frame dark={darkMode}>
       <Layout {...dataMap.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Main {...dataMap.main} dark={darkMode} />
         <Blog {...dataMap.blog} dark={darkMode} />

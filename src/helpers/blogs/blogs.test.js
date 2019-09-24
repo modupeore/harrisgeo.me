@@ -1,4 +1,4 @@
-import { getBlogs, getLatestId, getNewId } from "."
+import { getBlogs, getLatestId, getNewId } from "./blogs"
 
 describe("Given a getBlogs function", () => {
   describe("When it is called", () => {
