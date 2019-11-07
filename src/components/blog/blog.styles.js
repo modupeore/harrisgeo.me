@@ -1,15 +1,15 @@
 import styled from "styled-components"
-import { mobile } from "../tokens"
+import { mobile, dark, light, hover } from "../tokens"
 
 export const Block = styled.button`
-  height: 100px;
+  min-height: 100px;
   width: calc(100% - 20px);
   margin: 10px 0;
   padding: 10px;
   text-align: left;
   font-family: "Montserrat", sans-serif;
-  background-color: ${props => (props.dark ? "#000" : "#fff")};
-  color: ${props => (props.dark ? "#fff" : "#000")};
+  background-color: ${props => (props.dark ? dark : light)};
+  color: ${props => (props.dark ? light : dark)};
   border: 0;
   cursor: pointer;
 `
@@ -19,7 +19,7 @@ export const Title = styled.div`
   font-size: 24px;
 
   &:hover {
-    color: #00b3b0;
+    color: ${hover};
   }
 
   @media screen and (max-width: ${mobile}) {

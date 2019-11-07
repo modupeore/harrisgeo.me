@@ -1,13 +1,9 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import { Layout, Container, H1, Frame } from "../components/layout"
-import styled from "styled-components"
+import { Layout, Container, Frame } from "../components/layout"
 import Helmet from "react-helmet"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
-
-const PostContainer = styled.div`
-  margin: 50px 0;
-`
+import { H1, PostContainer } from './post.styles'
 
 const Template = ({ data }) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
@@ -32,7 +28,7 @@ const Template = ({ data }) => {
             defer={false}
           />
           <H1>{blog.frontmatter.title}</H1>
-          <PostContainer dangerouslySetInnerHTML={{ __html: blog.html }} />
+          <PostContainer dark={darkMode} dangerouslySetInnerHTML={{ __html: blog.html }} />
         </Container>
       </Layout>
     </Frame>

@@ -9,6 +9,9 @@ import {
   imageX,
   imageYMob,
   imageXMob,
+  light,
+  dark,
+  hover
 } from "../tokens"
 import { layout, space } from "styled-system"
 // TODO: use styled system instead of tokens
@@ -17,12 +20,11 @@ export const Frame = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background: ${props => (props.dark ? "#000" : "#fff")};
+  background: ${props => (props.dark ? dark : light)};
   height: 100%;
   width: 100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  scroll-behaviour: smooth;
 `
 
 export const Body = styled.div`
@@ -32,7 +34,7 @@ export const Body = styled.div`
   font-family: "Montserrat", sans-serif;
   width: 100%;
   height: 100%;
-  color: ${props => (props.dark ? "#fff" : "#000")};
+  color: ${props => (props.dark ? light : dark)};
 `
 
 export const Container = styled.div`
@@ -40,7 +42,7 @@ export const Container = styled.div`
   margin: ${spacingXl} auto;
   width: 800px;
   height: calc(100% - ${spacing3Xl});
-  background: ${props => (props.dark ? "#000" : "#fff")};
+  background: ${props => (props.dark ? dark : light)};
   @media screen and (max-width: ${mobile}) {
     margin: auto;
     width: 350px;
@@ -59,11 +61,11 @@ export const Section = styled.div`
 `
 
 export const Link = styled.a`
-  color: ${props => (props.dark ? "#eee" : "#000")};
+  color: ${props => (props.dark ? light : dark)};
   font-weight: 500;
 
   &:hover {
-    color: #00b3b0;
+    color: ${hover};
   }
 `
 

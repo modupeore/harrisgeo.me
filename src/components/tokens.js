@@ -11,3 +11,7 @@ export const imageY = "300px"
 export const imageX = "300px"
 export const imageYMob = "200px"
 export const imageXMob = "200px"
+export const dark = '#1F1F22'
+export const light = '#F2F2F0'
+export const white = '#fff'
+export const hover = '#00b3b0'
