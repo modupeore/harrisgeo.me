@@ -4,6 +4,7 @@ import Blog from "./blog"
 import Main from "./main"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { Layout, Frame } from "../components/layout"
+import GlobalStyles from '../components/globalStyles'
 
 const IndexPage = props => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
@@ -50,6 +51,7 @@ const IndexPage = props => {
 
   return (
     <Frame dark={darkMode}>
+      <GlobalStyles />
       <Layout {...dataMap.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Main {...dataMap.main} dark={darkMode} />
         <Blog {...dataMap.blog} dark={darkMode} />

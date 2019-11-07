@@ -4,6 +4,7 @@ import { Layout, Container, Frame } from "../components/layout"
 import Helmet from "react-helmet"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { H1, PostContainer } from './post.styles'
+import GlobalStyles from '../components/globalStyles'
 
 const Template = ({ data }) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
@@ -21,6 +22,7 @@ const Template = ({ data }) => {
   }
   return (
     <Frame dark={darkMode}>
+      <GlobalStyles />
       <Layout {...navData} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Container dark={darkMode}>
           <Helmet

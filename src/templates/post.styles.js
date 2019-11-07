@@ -2,7 +2,7 @@ import { H1 as H1Layout } from "../components/layout"
 import { white, dark, hover } from '../components/tokens'
 import styled from "styled-components"
 
-const font = " 'Merriweather', serif"
+const font = "'Merriweather', sans-serif"
 
 
 export const PostContainer = styled.div`
