@@ -13,38 +13,36 @@ const IndexPage = props => {
       prismicTitle: { data },
     },
   } = props
-
   const dataMap = {
     nav: {
-      blog: data.nav_blog.text,
-      brand: data.nav_brand.text,
+      blog: data.nav_blog[0].text,
+      brand: data.nav_brand[0].text,
       sun: data.nav_icon_light.url,
       moon: data.nav_icon_dark.url,
-      home: data.nav_home.text,
+      home: data.nav_home[0].text,
     },
     main: {
-      title: data.home_title.text,
-      bio: data.bio.html,
+      title: data.home_title[0].text,
+      bio: data.bio[0].text,
       profilePhoto: data.image.url,
-      currentJob: data.current_job.text,
+      currentJob: data.current_job[0].text,
       currentJobLink: data.current_job_link.url,
-      currentJobLinkText: data.current_job_link_text.text,
+      currentJobLinkText: data.current_job_link_text[0].text,
       github: data.github.url,
-      githubText: data.github_text.text,
+      githubText: data.github_text[0].text,
       githubImgLight: data.github_icon_light.url,
       githubImgDark: data.github_icon_dark.url,
       twitter: data.twitter.url,
-      twitterText: data.twitter_text.text,
+      twitterText: data.twitter_text[0].text,
       twitterImgLight: data.twitter_icon_light.url,
       twitterImgDark: data.twitter_icon_dark.url,
     },
     blog: {
-      title: data.blog_title.text,
+      title: data.blog_title[0].text,
     },
   }
 
   const toggleDarkMode = () => {
-    console.log({ darkMode })
     setDarkValue(!darkMode)
     setDarkMode(!darkMode)
   }
@@ -86,7 +84,7 @@ export const pageQuery = graphql`
           url
         }
         bio {
-          html
+          text
         }
         current_job {
           text

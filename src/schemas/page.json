@@ -1,0 +1,148 @@
+{
+  "Main": {
+    "nav_brand": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "nav_brand"
+      }
+    },
+    "nav_home": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "nav_home"
+      }
+    },
+    "nav_icon_dark": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "nav_icon_dark"
+      }
+    },
+    "nav_icon_light": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "nav_icon_light"
+      }
+    },
+    "nav_blog": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "nav_blog"
+      }
+    },
+    "home_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "home_title"
+      }
+    },
+    "bio": {
+      "type": "StructuredText",
+      "config": {
+        "multi": "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+        "label": "bio"
+      }
+    },
+    "image": {
+      "type": "Link",
+      "config": {
+        "select": "media",
+        "label": "image"
+      }
+    },
+    "current_job": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "current_job"
+      }
+    },
+    "current_job_link_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "current_job_link_text"
+      }
+    },
+    "current_job_link": {
+      "type": "Link",
+      "config": {
+        "label": "current_job_link",
+        "placeholder": "yo"
+      }
+    },
+    "github_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "github_text"
+      }
+    },
+    "github": {
+      "type": "Link",
+      "config": {
+        "label": "github"
+      }
+    },
+    "github_icon_dark": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "github_icon_dark"
+      }
+    },
+    "github_icon_light": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "github_icon_light"
+      }
+    },
+    "twitter_text": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1, heading2, heading3, heading4, heading5, heading6",
+        "label": "twitter_text"
+      }
+    },
+    "twitter": {
+      "type": "Link",
+      "config": {
+        "label": "twitter"
+      }
+    },
+    "twitter_icon_dark": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "twitter_icon_dark"
+      }
+    },
+    "twitter_icon_light": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "twitter_icon_light"
+      }
+    },
+    "blog_title": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "blog_title"
+      }
+    }
+  }
+}

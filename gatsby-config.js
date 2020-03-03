@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 module.exports = {
   siteMetadata: {
     title: `Harris Geo`,
@@ -26,6 +28,9 @@ module.exports = {
       options: {
         repositoryName: "harrisgeo",
         accessToken: process.env.API_KEY,
+        schemas: {
+          page: require('./src/schemas/page.json')
+        }
       },
     },
     "gatsby-transformer-remark",

@@ -2,25 +2,25 @@ const path = require("path")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
-
   const postTemplate = path.resolve("src/templates/post.js")
 
-  return graphql(`
-    {
-      allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
-        edges {
-          node {
-            frontmatter {
-              id
-              path
-              title
-              description
-              date
-            }
+  return graphql(`query loadPagesQuery() {
+    allMarkdownRemark(
+      sort: {fields: [frontmatter___id], order: DESC}
+    ) {
+      edges {
+        node {
+          frontmatter {
+            id
+            path
+            title
+            description
+            date
           }
         }
       }
     }
+  }
   `).then(res => {
     if (res.errors) {
       return Promise.reject(res.errors)
