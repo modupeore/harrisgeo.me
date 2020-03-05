@@ -23,8 +23,8 @@ export const Layout = ({
       <Navbar onTitleClick={() => goto("/")} title={brand} dark={dark}>
         {isLandingPage && (
           <Fragment>
-            <NavItem onClick={() => goto("#home")}>{home}</NavItem>
-            <NavItem onClick={() => goto("#blog")}>{blog}</NavItem>
+            <NavItem onClick={() => goto("/")}>{home}</NavItem>
+            <NavItem onClick={() => goto("/blogs")}>{blog}</NavItem>
           </Fragment>
         )}
         <NavItem onClick={toggleDarkMode}>

@@ -4,7 +4,8 @@ exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
   const postTemplate = path.resolve("src/templates/post.js")
 
-  return graphql(`query loadPagesQuery() {
+  return graphql(`
+  {
     allMarkdownRemark(
       sort: {fields: [frontmatter___id], order: DESC}
     ) {

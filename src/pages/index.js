@@ -1,44 +1,40 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import Blog from "./blog"
+import { Blogs } from "../components/Blogs"
 import Main from "./main"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { Layout, Frame } from "../components/layout"
 import GlobalStyles from '../components/globalStyles'
 
-const IndexPage = props => {
+const IndexPage = ({ data }) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
-  const {
-    data: {
-      prismicTitle: { data },
-    },
-  } = props
-  const dataMap = {
+  const { copy, blogs } = data
+  const dataObject = {
     nav: {
-      blog: data.nav_blog[0].text,
-      brand: data.nav_brand[0].text,
-      sun: data.nav_icon_light.url,
-      moon: data.nav_icon_dark.url,
-      home: data.nav_home[0].text,
+      blog: copy.data.nav_blog[0].text,
+      brand: copy.data.nav_brand[0].text,
+      sun: copy.data.nav_icon_light.url,
+      moon: copy.data.nav_icon_dark.url,
+      home: copy.data.nav_home[0].text,
     },
     main: {
-      title: data.home_title[0].text,
-      bio: data.bio[0].text,
-      profilePhoto: data.image.url,
-      currentJob: data.current_job[0].text,
-      currentJobLink: data.current_job_link.url,
-      currentJobLinkText: data.current_job_link_text[0].text,
-      github: data.github.url,
-      githubText: data.github_text[0].text,
-      githubImgLight: data.github_icon_light.url,
-      githubImgDark: data.github_icon_dark.url,
-      twitter: data.twitter.url,
-      twitterText: data.twitter_text[0].text,
-      twitterImgLight: data.twitter_icon_light.url,
-      twitterImgDark: data.twitter_icon_dark.url,
+      title: copy.data.home_title[0].text,
+      bio: copy.data.bio[0].text,
+      profilePhoto: copy.data.image.url,
+      currentJob: copy.data.current_job[0].text,
+      currentJobLink: copy.data.current_job_link.url,
+      currentJobLinkText: copy.data.current_job_link_text[0].text,
+      github: copy.data.github.url,
+      githubText: copy.data.github_text[0].text,
+      githubImgLight: copy.data.github_icon_light.url,
+      githubImgDark: copy.data.github_icon_dark.url,
+      twitter: copy.data.twitter.url,
+      twitterText: copy.data.twitter_text[0].text,
+      twitterImgLight: copy.data.twitter_icon_light.url,
+      twitterImgDark: copy.data.twitter_icon_dark.url,
     },
     blog: {
-      title: data.blog_title[0].text,
+      title: copy.data.blog_title[0].text,
     },
   }
 
@@ -50,81 +46,97 @@ const IndexPage = props => {
   return (
     <Frame dark={darkMode}>
       <GlobalStyles />
-      <Layout {...dataMap.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
-        <Main {...dataMap.main} dark={darkMode} />
-        <Blog {...dataMap.blog} dark={darkMode} />
+      <Layout {...dataObject.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
+        <Main {...dataObject.main} dark={darkMode} />
+        <Blogs {...dataObject.blog} dark={darkMode} blogs={blogs} preview={true} />
       </Layout>
     </Frame>
   )
 }
 
+
 export const pageQuery = graphql`
-  {
-    prismicTitle {
-      data {
-        nav_brand {
-          text
-        }
-        nav_icon_light {
-          url
-        }
-        nav_icon_dark {
-          url
-        }
-        nav_home {
-          text
-        }
-        nav_blog {
-          text
-        }
-        home_title {
-          text
-        }
-        image {
-          url
-        }
-        bio {
-          text
-        }
-        current_job {
-          text
-        }
-        current_job_link_text {
-          text
-        }
-        current_job_link {
-          url
-        }
-        github_text {
-          text
-        }
-        github {
-          url
-        }
-        github_icon_dark {
-          url
-        }
-        github_icon_light {
-          url
-        }
-        twitter_text {
-          text
-        }
-        twitter_icon_dark {
-          url
-        }
-        twitter_icon_light {
-          url
-        }
-        twitter {
-          url
-        }
-        blog_title {
-          text
+{
+  blogs: allMarkdownRemark(
+      sort: { fields: [frontmatter___id], order: DESC }
+      limit: 3
+  ) {
+    edges {
+      node {
+        frontmatter {
+          id
+          path
+          title
+          description
+          date
         }
       }
     }
   }
-`
+  copy: prismicTitle {
+    data {
+      nav_brand {
+        text
+      }
+      nav_icon_light {
+        url
+      }
+      nav_icon_dark {
+        url
+      }
+      nav_home {
+        text
+      }
+      nav_blog {
+        text
+      }
+      home_title {
+        text
+      }
+      image {
+        url
+      }
+      bio {
+        text
+      }
+      current_job {
+        text
+      }
+      current_job_link_text {
+        text
+      }
+      current_job_link {
+        url
+      }
+      github_text {
+        text
+      }
+      github {
+        url
+      }
+      github_icon_dark {
+        url
+      }
+      github_icon_light {
+        url
+      }
+      twitter_text {
+        text
+      }
+      twitter_icon_dark {
+        url
+      }
+      twitter_icon_light {
+        url
+      }
+      twitter {
+        url
+      }
+      blog_title {
+        text
+      }
+    }
+  }
+}`
 
 export default IndexPage
