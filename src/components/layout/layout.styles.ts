@@ -11,12 +11,13 @@ import {
   imageXMob,
   light,
   dark,
-  hover
+  hover,
 } from "../tokens"
-import { layout, space } from "styled-system"
+import { layout, space, LayoutProps, SpaceProps } from "styled-system"
 // TODO: use styled system instead of tokens
+import { Dark } from "./layout.models"
 
-export const Frame = styled.div`
+export const Frame = styled.div<Dark>`
   position: fixed;
   top: 0;
   left: 0;
@@ -27,7 +28,7 @@ export const Frame = styled.div`
   -webkit-overflow-scrolling: touch;
 `
 
-export const Body = styled.div`
+export const Body = styled.div<Dark>`
   position: absolute;
   left: 0px;
   top: 0px;
@@ -37,7 +38,7 @@ export const Body = styled.div`
   color: ${props => (props.dark ? light : dark)};
 `
 
-export const Container = styled.div`
+export const Container = styled.div<Dark>`
   position: sticky;
   margin: ${spacingXl} auto;
   width: 800px;
@@ -47,8 +48,8 @@ export const Container = styled.div`
     margin: auto;
     width: 350px;
     padding-top: ${spacing2Xl};
-    padding-left: ${spacing}
-    padding-right: ${spacing}
+    padding-left: ${spacing};
+    padding-right: ${spacing};
     height: calc(100% - ${spacing2Xl});
   }
 `
@@ -60,7 +61,7 @@ export const Section = styled.div`
   border-top: 2px solid white;
 `
 
-export const Link = styled.a`
+export const Link = styled.a<Dark>`
   color: ${props => (props.dark ? light : dark)};
   font-weight: 500;
 
@@ -81,8 +82,9 @@ export const Wrapper = styled.div`
     display: block;
   }
 `
+interface IconProps extends SpaceProps, LayoutProps {}
 
-export const Icon = styled.img`
+export const Icon = styled.img<IconProps>`
   ${layout}
   ${space}
 `

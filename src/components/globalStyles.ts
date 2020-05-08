@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import { MerriweatherRegular } from '../fonts'
+import { createGlobalStyle } from "styled-components"
+import { MerriweatherRegular } from "../fonts"
 
 export default createGlobalStyle`
   @font-face {

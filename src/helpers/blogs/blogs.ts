@@ -7,8 +7,8 @@ import fs from "fs"
 export const getBlogs = () => {
   const path = "src/pages/blog"
 
-  return new Promise(function(resolve, reject) {
-    fs.readdir(path, function(err, filenames) {
+  return new Promise(function (resolve, reject) {
+    fs.readdir(path, function (err, filenames) {
       if (err) reject(err)
       else {
         resolve(filenames)
@@ -22,7 +22,7 @@ export const getBlogs = () => {
  * @returns {number} latest id
  */
 export const getLatestId = async () => {
-  const latestId = await getBlogs().then(blogs => {
+  const latestId = await getBlogs().then((blogs: any) => {
     return blogs.length
   })
   return Number(latestId)

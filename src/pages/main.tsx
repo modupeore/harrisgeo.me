@@ -14,7 +14,7 @@ import Helmet from "react-helmet"
 
 const parser = new Parser()
 
-const Main = props => {
+const Main = (props: any) => {
   const {
     bio,
     currentJob,

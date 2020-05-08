@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { mobile, dark, light, hover } from "../tokens"
 
-export const Block = styled.button`
+export const Block = styled.button<{ dark: boolean }>`
   min-height: 100px;
   width: calc(100% - 20px);
   margin: 10px 0;

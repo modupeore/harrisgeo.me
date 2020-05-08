@@ -3,10 +3,11 @@ import { graphql } from "gatsby"
 import { Layout, Container, Frame } from "../components/layout"
 import Helmet from "react-helmet"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
-import { H1, PostContainer } from './post.styles'
-import GlobalStyles from '../components/globalStyles'
+import { H1, PostContainer } from "./post.styles"
+import GlobalStyles from "../components/globalStyles"
 
-const Template = ({ data }) => {
+const Template = (props: any) => {
+  const { data } = props
   const [darkMode, setDarkMode] = useState(getDarkValue())
 
   const toggleDarkMode = () => {
@@ -15,7 +16,7 @@ const Template = ({ data }) => {
   }
   const { blog, prismic } = data
 
-  const navData = {
+  const navData: any = {
     brand: "Back",
     sun: prismic.data.nav_icon_light.url,
     moon: prismic.data.nav_icon_dark.url,
@@ -30,7 +31,10 @@ const Template = ({ data }) => {
             defer={false}
           />
           <H1>{blog.frontmatter.title}</H1>
-          <PostContainer dark={darkMode} dangerouslySetInnerHTML={{ __html: blog.html }} />
+          <PostContainer
+            dark={darkMode}
+            dangerouslySetInnerHTML={{ __html: blog.html }}
+          />
         </Container>
       </Layout>
     </Frame>

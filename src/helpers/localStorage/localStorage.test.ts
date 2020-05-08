@@ -1,16 +1,15 @@
 import { getDarkValue, getItem, setItem, setDarkValue } from "./localStorage"
 
-let ls = {}
-const localStorageMock = () => {}
+let ls: any = {}
 Object.defineProperty(window, "localStorage", {
   value: {
-    setItem: (key, value) => {
+    setItem: (key: string, value: string) => {
       ls[key] = value.toString()
     },
-    getItem: key => {
+    getItem: (key: string) => {
       return ls[key] || null
     },
-    removeItem: key => {
+    removeItem: (key: string) => {
       delete ls[key]
     },
     clear: () => {
@@ -42,7 +41,7 @@ describe("Test all local storage functions", () => {
   describe("Given a setDarkValue function", () => {
     describe("when it is called", () => {
       it("should change the value of dark in localStorage in window", () => {
-        setDarkValue("true")
+        setDarkValue(true)
         expect(window.localStorage.getItem("dark")).toEqual("true")
       })
     })
@@ -50,7 +49,7 @@ describe("Test all local storage functions", () => {
   describe("Given a getDarkValue function", () => {
     describe("when it is called", () => {
       it("should change the value of dark in localStorage in window", () => {
-        window.localStorage.setItem("dark", true)
+        window.localStorage.setItem("dark", "true")
         expect(getDarkValue()).toEqual(true)
       })
     })

@@ -13,7 +13,7 @@ export const Layout = ({
   moon = "",
   sun = "",
   toggleDarkMode = null,
-}) => {
+}: any) => {
   const goto = (url = "") => {
     navigate(url)
   }
@@ -28,7 +28,7 @@ export const Layout = ({
           </Fragment>
         )}
         <NavItem onClick={toggleDarkMode}>
-          <Icon src={dark ? sun : moon} width={18} height={18} display="flex" />
+          <Icon src={dark ? sun : moon} width={18} height={18} />
         </NavItem>
       </Navbar>
       {children}

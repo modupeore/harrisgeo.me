@@ -4,9 +4,9 @@ import { Blogs } from "../components/Blogs"
 import Main from "./main"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { Layout, Frame } from "../components/layout"
-import GlobalStyles from '../components/globalStyles'
+import GlobalStyles from "../components/globalStyles"
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ data }: any) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
   const { copy, blogs } = data
   const dataObject = {
@@ -46,97 +46,106 @@ const IndexPage = ({ data }) => {
   return (
     <Frame dark={darkMode}>
       <GlobalStyles />
-      <Layout {...dataObject.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
+      <Layout
+        {...dataObject.nav}
+        dark={darkMode}
+        toggleDarkMode={toggleDarkMode}
+      >
         <Main {...dataObject.main} dark={darkMode} />
-        <Blogs {...dataObject.blog} dark={darkMode} blogs={blogs} preview={true} />
+        <Blogs
+          {...dataObject.blog}
+          dark={darkMode}
+          blogs={blogs}
+          preview={true}
+        />
       </Layout>
     </Frame>
   )
 }
 
-
 export const pageQuery = graphql`
-{
-  blogs: allMarkdownRemark(
+  {
+    blogs: allMarkdownRemark(
       sort: { fields: [frontmatter___id], order: DESC }
       limit: 3
-  ) {
-    edges {
-      node {
-        frontmatter {
-          id
-          path
-          title
-          description
-          date
+    ) {
+      edges {
+        node {
+          frontmatter {
+            id
+            path
+            title
+            description
+            date
+          }
+        }
+      }
+    }
+    copy: prismicTitle {
+      data {
+        nav_brand {
+          text
+        }
+        nav_icon_light {
+          url
+        }
+        nav_icon_dark {
+          url
+        }
+        nav_home {
+          text
+        }
+        nav_blog {
+          text
+        }
+        home_title {
+          text
+        }
+        image {
+          url
+        }
+        bio {
+          text
+        }
+        current_job {
+          text
+        }
+        current_job_link_text {
+          text
+        }
+        current_job_link {
+          url
+        }
+        github_text {
+          text
+        }
+        github {
+          url
+        }
+        github_icon_dark {
+          url
+        }
+        github_icon_light {
+          url
+        }
+        twitter_text {
+          text
+        }
+        twitter_icon_dark {
+          url
+        }
+        twitter_icon_light {
+          url
+        }
+        twitter {
+          url
+        }
+        blog_title {
+          text
         }
       }
     }
   }
-  copy: prismicTitle {
-    data {
-      nav_brand {
-        text
-      }
-      nav_icon_light {
-        url
-      }
-      nav_icon_dark {
-        url
-      }
-      nav_home {
-        text
-      }
-      nav_blog {
-        text
-      }
-      home_title {
-        text
-      }
-      image {
-        url
-      }
-      bio {
-        text
-      }
-      current_job {
-        text
-      }
-      current_job_link_text {
-        text
-      }
-      current_job_link {
-        url
-      }
-      github_text {
-        text
-      }
-      github {
-        url
-      }
-      github_icon_dark {
-        url
-      }
-      github_icon_light {
-        url
-      }
-      twitter_text {
-        text
-      }
-      twitter_icon_dark {
-        url
-      }
-      twitter_icon_light {
-        url
-      }
-      twitter {
-        url
-      }
-      blog_title {
-        text
-      }
-    }
-  }
-}`
+`
 
 export default IndexPage
