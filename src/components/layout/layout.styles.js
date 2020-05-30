@@ -11,7 +11,8 @@ import {
   imageXMob,
   light,
   dark,
-  hover
+  hover,
+  tablet,
 } from "../tokens"
 import { layout, space } from "styled-system"
 // TODO: use styled system instead of tokens
@@ -50,6 +51,10 @@ export const Container = styled.div`
     padding-left: ${spacing}
     padding-right: ${spacing}
     height: calc(100% - ${spacing2Xl});
+  }
+
+  @media screen and (min-width: ${mobile}) and (max-width: ${tablet}) {
+    width: 700px;
   }
 `
 

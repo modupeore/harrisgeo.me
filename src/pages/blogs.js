@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import { Layout, Frame } from "../components/layout"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
-import GlobalStyles from '../components/globalStyles'
-import { Blogs } from '../components/Blogs'
+import { Blogs } from "../components/Blogs"
 
 const BlogsPage = ({ data }) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
@@ -27,53 +26,62 @@ const BlogsPage = ({ data }) => {
 
   return (
     <Frame dark={darkMode}>
-      <GlobalStyles />
-      <Layout {...dataObject.nav} dark={darkMode} toggleDarkMode={toggleDarkMode}>
-        <Blogs {...dataObject.blog} dark={darkMode} blogs={blogs} preview={false} />
+      <Layout
+        {...dataObject.nav}
+        dark={darkMode}
+        toggleDarkMode={toggleDarkMode}
+      >
+        <Blogs
+          {...dataObject.blog}
+          dark={darkMode}
+          blogs={blogs}
+          preview={false}
+        />
       </Layout>
     </Frame>
   )
 }
 
 export const pageQuery = graphql`
-{
-  blogs: allMarkdownRemark(
-    sort: { fields: [frontmatter___id], order: DESC }
-  ) {
-    edges {
-      node {
-        frontmatter {
-          id
-          path
-          title
-          description
-          date
+  {
+    blogs: allMarkdownRemark(
+      sort: { fields: [frontmatter___id], order: DESC }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            id
+            path
+            title
+            description
+            date
+          }
+        }
+      }
+    }
+    copy: prismicTitle {
+      data {
+        nav_brand {
+          text
+        }
+        nav_icon_light {
+          url
+        }
+        nav_icon_dark {
+          url
+        }
+        nav_home {
+          text
+        }
+        nav_blog {
+          text
+        }
+        blog_title {
+          text
         }
       }
     }
   }
-  copy: prismicTitle {
-    data {
-      nav_brand {
-        text
-      }
-      nav_icon_light {
-        url
-      }
-      nav_icon_dark {
-        url
-      }
-      nav_home {
-        text
-      }
-      nav_blog {
-        text
-      }
-      blog_title {
-        text
-      }
-    }
-  }
-}`
+`
 
 export default BlogsPage
