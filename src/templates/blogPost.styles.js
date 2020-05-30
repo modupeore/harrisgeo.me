@@ -1,9 +1,14 @@
 import { H1 as H1Layout } from "../components/layout"
 import { white, dark, hover, black, mobile } from "../components/tokens"
 import styled from "styled-components"
-const font = "'Merriweather', sans-serif"
+// TODO: investigate why importing from styled-components instead of css causes that much font to blink
+import MerriweatherFontFace from "../fonts/merriweather/stylesheet.css"
+
+const font = "Merriweather"
 
 export const PostContainer = styled.div`
+  ${MerriweatherFontFace};
+
   margin: 50px 0;
   font-family: ${font};
   line-height: 2;
@@ -23,9 +28,13 @@ export const PostContainer = styled.div`
       "Lucida Typewriter", monospace;
   }
 
+  .language-text {
+    color: ${hover};
+  }
+
   > ol > li > a,
   > p > a {
-    color: ${(props) => (props.dark ? white : dark)};
+    color: ${props => (props.dark ? white : dark)};
     font-weight: 600;
     :hover {
       color: ${hover};

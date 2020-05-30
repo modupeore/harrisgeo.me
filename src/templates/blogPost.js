@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { Layout, Container, Frame } from "../components/layout"
+import { ProgressBar } from "../components/ProgressBar"
 import Helmet from "react-helmet"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
-import { H1, PostContainer } from './post.styles'
-import GlobalStyles from '../components/globalStyles'
+import { H1, PostContainer } from "./blogPost.styles"
 
-const Template = ({ data }) => {
+const BlogPost = ({ data }) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
-
+  const [progress, setProgress] = useState(0)
   const toggleDarkMode = () => {
     setDarkMode(!darkMode)
     setDarkValue(!darkMode)
@@ -21,8 +21,14 @@ const Template = ({ data }) => {
     moon: prismic.data.nav_icon_dark.url,
   }
   return (
-    <Frame dark={darkMode}>
-      <GlobalStyles />
+    <Frame
+      dark={darkMode}
+      onScroll={e => {
+        const { scrollTop, scrollHeight, clientHeight } = e.target
+        setProgress((scrollTop * 100) / (scrollHeight - clientHeight))
+      }}
+    >
+      <ProgressBar progress={progress} />
       <Layout {...navData} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Container dark={darkMode}>
           <Helmet
@@ -30,14 +36,17 @@ const Template = ({ data }) => {
             defer={false}
           />
           <H1>{blog.frontmatter.title}</H1>
-          <PostContainer dark={darkMode} dangerouslySetInnerHTML={{ __html: blog.html }} />
+          <PostContainer
+            dark={darkMode}
+            dangerouslySetInnerHTML={{ __html: blog.html }}
+          />
         </Container>
       </Layout>
     </Frame>
   )
 }
 
-export const postQuery = graphql`
+export const blogPostQuery = graphql`
   query($path: String) {
     blog: markdownRemark(frontmatter: { path: { eq: $path } }) {
       html
@@ -60,4 +69,4 @@ export const postQuery = graphql`
   }
 `
 
-export default Template
+export default BlogPost
