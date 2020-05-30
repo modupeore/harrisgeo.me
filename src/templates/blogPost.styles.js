@@ -1,5 +1,12 @@
 import { H1 as H1Layout } from "../components/layout"
-import { white, dark, hover, black, mobile } from "../components/tokens"
+import {
+  white,
+  dark,
+  hover,
+  black,
+  mobile,
+  spacing,
+} from "../components/tokens"
 import styled from "styled-components"
 // TODO: investigate why importing from styled-components instead of css causes that much font to blink
 import MerriweatherFontFace from "../fonts/merriweather/stylesheet.css"
@@ -50,4 +57,12 @@ export const PostContainer = styled.div`
 `
 export const H1 = styled(H1Layout)`
   font-family: ${font};
+`
+export const Footer = styled.div`
+  width: 100%;
+  padding-bottom: ${spacing};
+`
+
+export const P = styled.p`
+  font-size: 14px;
 `
