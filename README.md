@@ -4,8 +4,6 @@
 
 Created with [gatsby](https://www.gatsbyjs.org) hosted on [netlify](https://www.netlify.com/)
 
-
-
 [https://harrisgeo.me](https://harrisgeo.me)
 
 ### Installation

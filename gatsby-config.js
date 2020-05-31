@@ -1,14 +1,25 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
     title: `Harris Geo`,
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    `gatsby-plugin-react-helmet`,
     "gatsby-plugin-sass",
-    "gatsby-transformer-sharp",
     "gatsby-plugin-styled-components",
+    `gatsby-plugin-typescript`,
+    "gatsby-transformer-sharp",
+    {
+      resolve: "gatsby-source-prismic",
+      options: {
+        repositoryName: "harrisgeo",
+        accessToken: process.env.API_KEY,
+        schemas: {
+          page: require("./src/schemas/page.json"),
+        },
+      },
+    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -20,17 +31,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "fonts",
-        path: `${__dirname}/src/fonts/`
-      }
-    },
-    {
-      resolve: "gatsby-source-prismic",
-      options: {
-        repositoryName: "harrisgeo",
-        accessToken: process.env.API_KEY,
-        schemas: {
-          page: require('./src/schemas/page.json')
-        }
+        path: `${__dirname}/src/fonts/`,
       },
     },
     "gatsby-transformer-remark",
@@ -72,4 +73,4 @@ module.exports = {
       },
     },
   ],
-}
+};
