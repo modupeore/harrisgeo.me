@@ -55,6 +55,7 @@
     "dotenv": "^8.2.0",
     "jest": "^26.0.1",
     "kill-port": "^1.6.0",
+    "plop": "^2.7.1",
     "prettier": "^2.0.5",
     "ts-jest": "^26.1.0",
     "typescript": "^3.9.3"
