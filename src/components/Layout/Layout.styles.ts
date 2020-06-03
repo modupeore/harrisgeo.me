@@ -9,6 +9,10 @@ interface Dark {
   dark: boolean
 }
 
+interface Small {
+  small?: boolean
+}
+
 export const Frame = styled.div<Dark>`
   position: fixed;
   top: 0;
@@ -36,6 +40,7 @@ export const Container = styled.div<Dark>`
   width: 800px;
   height: calc(100% - ${tokens.spacing3Xl});
   background: ${(props) => (props.dark ? tokens.dark : tokens.light)};
+
   @media screen and (max-width: ${tokens.mobile}) {
     margin: auto;
     width: 350px;
@@ -43,6 +48,10 @@ export const Container = styled.div<Dark>`
     padding-left: 0;
     padding-right: 0;
     height: calc(100% - ${tokens.spacing2Xl});
+  }
+
+  @media screen and (max-width: ${tokens.mobileXs}) {
+    width: 300px;
   }
 
   @media screen and (min-width: ${tokens.mobile}) and (max-width: ${tokens.tablet}) {
@@ -114,8 +123,12 @@ export const Bio = styled.div`
   }
 `
 
-export const Box = styled.div`
+export const Box = styled.div<Small>`
   padding: ${tokens.spacing} 0;
+
+  @media screen and (max-width: ${tokens.mobile}) {
+    padding: ${(props) => (props.small ? 0 : 20)};
+  }
 `
 
 export const H1 = styled.h1`

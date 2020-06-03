@@ -1,4 +1,5 @@
 export interface Tokens {
+  mobileXs: string
   mobile: string
   tablet: string
   spacingXs: string
@@ -20,6 +21,7 @@ export interface Tokens {
 }
 
 export const tokens: Tokens = {
+  mobileXs: "360px",
   mobile: "768px",
   tablet: "992px",
   spacingXs: "5px",

@@ -45,7 +45,7 @@ export const Main = (props: any) => {
               {currentJobLinkText}
             </Link>
           </Box>
-          <Box>
+          <Box small>
             <Link href={github} target="_blank" dark={dark}>
               <Icon
                 src={dark ? githubImgLight : githubImgDark}
