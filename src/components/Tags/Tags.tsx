@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import { Layout, Frame } from "../components/Layout"
-import { getDarkValue, setDarkValue } from "../helpers/localStorage"
-import { BlogItems } from "../components/BlogItems"
+import { Layout, Frame } from "../Layout"
+import { getDarkValue, setDarkValue } from "../../helpers/localStorage"
 import { Helmet } from "react-helmet"
+import { BlogItems } from "../BlogItems"
 
 export const pageQuery = graphql`
   {
@@ -42,12 +42,13 @@ export const pageQuery = graphql`
   }
 `
 
-const BlogsPage = (props: any) => {
+const TagsPage = (props: any) => {
   const [darkMode, setDarkMode] = useState(getDarkValue())
+  const { path, data } = props
   const {
     copy: { data: copy },
-    blogs,
-  } = props.data
+    blogs: allBlogs,
+  } = data
   const dataObject = {
     nav: {
       blog: copy.blogs,
@@ -60,6 +61,15 @@ const BlogsPage = (props: any) => {
       title: copy.blog_title[0].text,
     },
   }
+
+  const tag = path.replace("/tags/", "")
+  const blogs: any = { edges: [] }
+  allBlogs.edges.forEach((blog: any) => {
+    if (blog.node.frontmatter.tags.includes(tag)) {
+      blogs.edges.push(blog)
+    }
+  })
+
   const toggleDarkMode = () => {
     setDarkValue(!darkMode)
     setDarkMode(!darkMode)
@@ -68,7 +78,7 @@ const BlogsPage = (props: any) => {
   return (
     <Frame dark={darkMode}>
       <Helmet>
-        <title>Harris Geo - All Blogs</title>
+        <title>Harris Geo - Tag</title>
       </Helmet>
       <Layout
         {...dataObject.nav}
@@ -77,6 +87,7 @@ const BlogsPage = (props: any) => {
       >
         <BlogItems
           {...dataObject.blog}
+          title={tag.charAt(0).toUpperCase() + tag.slice(1)}
           dark={darkMode}
           blogs={blogs}
           preview={false}
@@ -86,4 +97,4 @@ const BlogsPage = (props: any) => {
   )
 }
 
-export default BlogsPage
+export default TagsPage

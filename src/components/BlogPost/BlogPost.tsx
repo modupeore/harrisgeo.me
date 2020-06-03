@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { graphql } from "gatsby";
-import { Layout, Container, Frame, Link } from "../components/Layout";
-import { ProgressBar } from "../components/ProgressBar";
-import { Helmet } from "react-helmet";
-import { getDarkValue, setDarkValue } from "../helpers/localStorage";
-import { H1, PostContainer, Footer, P } from "./BlogPost.styles";
+import React, { useState } from "react"
+import { graphql, navigate } from "gatsby"
+import { Layout, Container, Frame, Link } from "../Layout"
+import { ProgressBar } from "../ProgressBar"
+import { Helmet } from "react-helmet"
+import { getDarkValue, setDarkValue } from "../../helpers/localStorage"
+import {
+  H1,
+  PostContainer,
+  Footer,
+  P,
+  TagWrapper,
+  Tag,
+} from "./BlogPost.styles"
 
 export const blogPostQuery = graphql`
   query($path: String) {
@@ -14,6 +21,7 @@ export const blogPostQuery = graphql`
         date
         path
         title
+        tags
       }
     }
     prismic: prismicTitle {
@@ -34,31 +42,35 @@ export const blogPostQuery = graphql`
       }
     }
   }
-`;
+`
 
 const BlogPost = (props: any) => {
-  const [darkMode, setDarkMode] = useState(getDarkValue());
-  const [progress, setProgress] = useState(0);
+  const [darkMode, setDarkMode] = useState(getDarkValue())
+  const [progress, setProgress] = useState(0)
   const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-    setDarkValue(!darkMode);
-  };
+    setDarkMode(!darkMode)
+    setDarkValue(!darkMode)
+  }
   const {
     blog,
     prismic: { data },
-  } = props.data;
+  } = props.data
 
   const navData = {
     brand: data.back,
     sun: data.icon_light.url,
     moon: data.icon_dark.url,
-  };
+  }
+
+  const splitTags = (tags: string): string[] =>
+    tags.split(",").map((t) => t.replace(/ /g, ""))
+
   return (
     <Frame
       dark={darkMode}
       onScroll={(e: any) => {
-        const { scrollTop, scrollHeight, clientHeight } = e.target;
-        setProgress((scrollTop * 100) / (scrollHeight - clientHeight));
+        const { scrollTop, scrollHeight, clientHeight } = e.target
+        setProgress((scrollTop * 100) / (scrollHeight - clientHeight))
       }}
     >
       <Helmet>
@@ -73,6 +85,21 @@ const BlogPost = (props: any) => {
             dangerouslySetInnerHTML={{ __html: blog.html }}
           />
           <Footer>
+            <P>
+              Date posted:&nbsp;<b>{blog.frontmatter.date}</b>
+            </P>
+            <TagWrapper>
+              Tags:&nbsp;
+              {splitTags(blog.frontmatter.tags).map((tag, i) => (
+                <Tag
+                  key={i}
+                  dark={darkMode}
+                  onClick={() => navigate(`/tags/${tag}`)}
+                >
+                  {tag}
+                </Tag>
+              ))}
+            </TagWrapper>
             <P>{data.footer_questions}</P>
             {data.social_media.map(
               ({ social_text, social_name, social_link }: any, i: number) => (
@@ -88,7 +115,7 @@ const BlogPost = (props: any) => {
         </Container>
       </Layout>
     </Frame>
-  );
-};
+  )
+}
 
-export default BlogPost;
+export default BlogPost

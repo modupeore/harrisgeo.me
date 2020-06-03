@@ -1,47 +1,66 @@
-import styled from "styled-components";
-import { mobile, dark, light, hover } from "../tokens";
+import styled from "styled-components"
+import { tokens } from "../tokens"
 
-export const Block = styled.button<{ dark: boolean }>`
+interface DarkProps {
+  dark: boolean
+}
+
+export const BlockWrapper = styled.div`
+  padding: ${tokens.spacingS};
+`
+
+export const Block = styled.button<DarkProps>`
   min-height: 100px;
   width: calc(100% - 20px);
-  margin: 10px 0;
-  padding: 10px;
+  padding: 0;
   text-align: left;
   font-family: "Montserrat", sans-serif;
-  background-color: ${(props) => (props.dark ? dark : light)};
-  color: ${(props) => (props.dark ? light : dark)};
+  background-color: ${(props) => (props.dark ? tokens.dark : tokens.light)};
+  color: ${(props) => (props.dark ? tokens.light : tokens.dark)};
   border: 0;
   cursor: pointer;
-`;
+
+  @media screen and (max-width: ${tokens.mobile}) {
+    min-height: ${tokens.spacing2Xl};
+  }
+`
+
+export const MiniWrapper = styled.div`
+  display: flex;
+  margin: ${tokens.spacingS} 0;
+  align-items: baseline;
+
+  @media screen and (max-width: ${tokens.mobile}) {
+    > button:first-child {
+      margin-left: 70px;
+    }
+  }
+`
 
 export const Title = styled.div`
   text-decoration: none;
   font-size: 24px;
 
   &:hover {
-    color: ${hover};
+    color: ${tokens.hover};
   }
 
-  @media screen and (max-width: ${mobile}) {
+  @media screen and (max-width: ${tokens.mobile}) {
     font-size: 20px;
   }
-`;
+`
 
 export const Description = styled.div`
   font-size: 20px;
-  margin-top: 10px;
+  margin-top: ${tokens.spacingS};
 
-  @media screen and (max-width: ${mobile}) {
+  @media screen and (max-width: ${tokens.mobile}) {
     font-size: 16px;
   }
-`;
+`
 
 export const Date = styled.div`
   font-size: 16px;
   font-style: italic;
   color: #777;
-
-  @media screen and (max-width: ${mobile}) {
-    font-size: 12px;
-  }
-`;
+`

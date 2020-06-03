@@ -1,27 +1,57 @@
-import React from "react";
-import { navigate } from "gatsby";
-import { Container, H1 } from "../Layout";
-import { Block, Title, Description, Date } from "./BlogItems.styles";
+import React from "react"
+import { navigate } from "gatsby"
+import { Container, H1, Tag } from "../Layout"
+import {
+  Block,
+  Title,
+  Description,
+  Date,
+  MiniWrapper,
+  BlockWrapper,
+} from "./BlogItems.styles"
 
 export const BlogItems = ({ dark, title, blogs, preview }: any) => {
   const handleClick = (path: any) => {
-    navigate(path);
-  };
+    navigate(path)
+  }
+
+  const splitTags = (tags: string): string[] => {
+    return tags.split(",").map((tag) => {
+      return tag.replace(/ /g, "")
+    })
+  }
 
   return (
     <Container dark={dark} id="blog">
       <H1>{title}</H1>
       {blogs.edges.map(({ node }: any, i: number) => {
         const {
-          frontmatter: { path, title, description, date },
-        } = node;
+          frontmatter: { path, title, description, date, tags },
+        } = node
+        const tagsArray = splitTags(tags)
         return (
-          <Block key={i} onClick={() => handleClick(path)} dark={dark}>
-            <Title>{title}</Title>
-            <Description>{description}</Description>
-            <Date>{date}</Date>
-          </Block>
-        );
+          <BlockWrapper key={i}>
+            <Block onClick={() => handleClick(path)} dark={dark}>
+              <Title>{title}</Title>
+              <Description>{description}</Description>
+            </Block>
+            <MiniWrapper>
+              <Date>{date}</Date>
+              {tagsArray.map((tag: string, j: number) => (
+                <Tag
+                  key={j}
+                  dark={dark}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleClick(`/tags/${tag}`)
+                  }}
+                >
+                  {tag}
+                </Tag>
+              ))}
+            </MiniWrapper>
+          </BlockWrapper>
+        )
       })}
       {preview && (
         <Block onClick={() => handleClick("/blogs")} dark={dark}>
@@ -29,5 +59,5 @@ export const BlogItems = ({ dark, title, blogs, preview }: any) => {
         </Block>
       )}
     </Container>
-  );
-};
+  )
+}

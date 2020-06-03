@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { graphql } from "gatsby";
-import { Blogs } from "../components/Blogs";
-import { Main } from "../components/Main";
-import { Helmet } from "react-helmet";
-import { getDarkValue, setDarkValue } from "../helpers/localStorage";
-import { Layout, Frame } from "../components/Layout";
+import React, { useState } from "react"
+import { graphql } from "gatsby"
+import { BlogItems } from "../components/BlogItems"
+import { Main } from "../components/Main"
+import { Helmet } from "react-helmet"
+import { getDarkValue, setDarkValue } from "../helpers/localStorage"
+import { Layout, Frame } from "../components/Layout"
 
 export const pageQuery = graphql`
   {
@@ -20,6 +20,7 @@ export const pageQuery = graphql`
             title
             description
             date
+            tags
           }
         }
       }
@@ -83,14 +84,14 @@ export const pageQuery = graphql`
       }
     }
   }
-`;
+`
 
 const IndexPage = (props: any) => {
-  const [darkMode, setDarkMode] = useState(getDarkValue());
+  const [darkMode, setDarkMode] = useState(getDarkValue())
   const {
     copy: { data: copy },
     blogs,
-  } = props.data;
+  } = props.data
   const dataObject = {
     nav: {
       blog: copy.blogs,
@@ -118,12 +119,12 @@ const IndexPage = (props: any) => {
     blog: {
       title: copy.blog_title[0].text,
     },
-  };
+  }
 
   const toggleDarkMode = () => {
-    setDarkValue(!darkMode);
-    setDarkMode(!darkMode);
-  };
+    setDarkValue(!darkMode)
+    setDarkMode(!darkMode)
+  }
 
   return (
     <Frame dark={darkMode}>
@@ -137,7 +138,7 @@ const IndexPage = (props: any) => {
       >
         <Main {...dataObject.main} dark={darkMode} />
 
-        <Blogs
+        <BlogItems
           {...dataObject.blog}
           dark={darkMode}
           blogs={blogs}
@@ -145,7 +146,7 @@ const IndexPage = (props: any) => {
         />
       </Layout>
     </Frame>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage

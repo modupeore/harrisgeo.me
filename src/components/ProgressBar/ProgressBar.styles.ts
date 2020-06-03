@@ -1,8 +1,8 @@
-import styled from "styled-components";
-import { hover } from "../tokens";
+import styled from "styled-components"
+import { tokens } from "../tokens"
 
 interface ProgressBarProps {
-  progress: number;
+  progress: number
 }
 
 export const ProgressBarWrapper = styled.div`
@@ -12,7 +12,7 @@ export const ProgressBarWrapper = styled.div`
   z-index: 99;
   width: 100%;
   height: 5px;
-`;
+`
 
 export const ProgressBarBar = styled.div.attrs(
   ({ progress }: ProgressBarProps) => ({
@@ -20,5 +20,5 @@ export const ProgressBarBar = styled.div.attrs(
   })
 )<ProgressBarProps>`
   height: 100%;
-  background-color: ${hover};
-`;
+  background-color: ${tokens.hover};
+`
