@@ -15,8 +15,8 @@ export const Block = styled.button<DarkProps>`
   padding: 0;
   text-align: left;
   font-family: "Montserrat", sans-serif;
-  background-color: ${(props) => (props.dark ? tokens.dark : tokens.light)};
-  color: ${(props) => (props.dark ? tokens.light : tokens.dark)};
+  background-color: ${props => (props.dark ? tokens.dark : tokens.light)};
+  color: ${props => (props.dark ? tokens.light : tokens.dark)};
   border: 0;
   cursor: pointer;
 
@@ -33,6 +33,11 @@ export const MiniWrapper = styled.div`
   @media screen and (max-width: ${tokens.mobile}) {
     > button:first-child {
       margin-left: 70px;
+    }
+
+    /* only show first 3 children */
+    > button:nth-last-child(n + 3) {
+      display: none;
     }
   }
 `

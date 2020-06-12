@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { Layout, Frame } from "../Layout"
 import { getDarkValue, setDarkValue } from "../../helpers/localStorage"
-import { Helmet } from "react-helmet"
 import { BlogItems } from "../BlogItems"
+import { SEO } from "../SEO"
 
 export const pageQuery = graphql`
   {
@@ -28,6 +28,7 @@ export const pageQuery = graphql`
         site_name
         home
         blogs
+        iwomm
         icon_dark {
           url
         }
@@ -62,14 +63,22 @@ const TagsPage = (props: any) => {
     },
   }
 
-  const tag = path.replace("/tags/", "")
   const blogs: any = { edges: [] }
+  const pathTag = path.replace("/tags/", "")
   allBlogs.edges.forEach((blog: any) => {
-    if (blog.node.frontmatter.tags.includes(tag)) {
+    if (blog.node.frontmatter.tags.includes(pathTag)) {
       blogs.edges.push(blog)
     }
   })
 
+  const tagTitle = (text: string): string => {
+    if (text === "iwomm") {
+      return copy.iwomm
+    }
+    return text.charAt(0).toUpperCase() + text.slice(1)
+  }
+
+  const tag = tagTitle(pathTag)
   const toggleDarkMode = () => {
     setDarkValue(!darkMode)
     setDarkMode(!darkMode)
@@ -77,9 +86,7 @@ const TagsPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <Helmet>
-        <title>Harris Geo - Tag</title>
-      </Helmet>
+      <SEO title={tag} />
       <Layout
         {...dataObject.nav}
         dark={darkMode}
@@ -87,7 +94,7 @@ const TagsPage = (props: any) => {
       >
         <BlogItems
           {...dataObject.blog}
-          title={tag.charAt(0).toUpperCase() + tag.slice(1)}
+          title={tag}
           dark={darkMode}
           blogs={blogs}
           preview={false}

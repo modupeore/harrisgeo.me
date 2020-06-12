@@ -1,8 +1,15 @@
-require("dotenv").config();
+require("dotenv").config()
 
 module.exports = {
   siteMetadata: {
     title: `Harris Geo`,
+    titleTemplate: "%s Personal Blog",
+    description: "Sharing some cool stuff I have learned about web development",
+    url: "https://www.harrisgeo.me",
+    image:
+      "https://images.prismic.io/harrisgeo%2Fd8abaa2d-b275-4896-a887-bd3263774172_me-snow.jpg?auto=compress,format",
+    author: "@harrisgeo88",
+    twitterUsername: "@harrisgeo88",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,6 +17,18 @@ module.exports = {
     "gatsby-plugin-styled-components",
     `gatsby-plugin-typescript`,
     "gatsby-transformer-sharp",
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `harris-geo-blog`,
+        short_name: `harris-geo`,
+        start_url: `/`,
+        background_color: `#00b3b0`,
+        theme_color: `#00b3b0`,
+        display: `minimal-ui`,
+        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
     {
       resolve: "gatsby-source-prismic",
       options: {
@@ -73,4 +92,4 @@ module.exports = {
       },
     },
   ],
-};
+}

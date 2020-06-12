@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { Layout, Frame } from "../components/Layout"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { BlogItems } from "../components/BlogItems"
-import { Helmet } from "react-helmet"
+import { SEO } from "../components/SEO"
 
 export const pageQuery = graphql`
   {
@@ -67,9 +67,7 @@ const BlogsPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <Helmet>
-        <title>Harris Geo - All Blogs</title>
-      </Helmet>
+      <SEO title="Blogs" />
       <Layout
         {...dataObject.nav}
         dark={darkMode}

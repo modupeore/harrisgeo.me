@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { BlogItems } from "../components/BlogItems"
 import { Main } from "../components/Main"
-import { Helmet } from "react-helmet"
 import { getDarkValue, setDarkValue } from "../helpers/localStorage"
 import { Layout, Frame } from "../components/Layout"
+import { SEO } from "../components/SEO"
 
 export const pageQuery = graphql`
   {
@@ -128,9 +128,7 @@ const IndexPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <Helmet>
-        <title>Harris Geo - Home</title>
-      </Helmet>
+      <SEO title="Home" />
       <Layout
         {...dataObject.nav}
         dark={darkMode}

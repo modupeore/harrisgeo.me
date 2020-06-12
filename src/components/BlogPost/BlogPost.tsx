@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { graphql, navigate } from "gatsby"
 import { Layout, Container, Frame, Link } from "../Layout"
 import { ProgressBar } from "../ProgressBar"
-import { Helmet } from "react-helmet"
 import { getDarkValue, setDarkValue } from "../../helpers/localStorage"
 import {
   H1,
@@ -12,6 +11,7 @@ import {
   TagWrapper,
   Tag,
 } from "./BlogPost.styles"
+import { SEO } from "../SEO"
 
 export const blogPostQuery = graphql`
   query($path: String) {
@@ -73,9 +73,7 @@ const BlogPost = (props: any) => {
         setProgress((scrollTop * 100) / (scrollHeight - clientHeight))
       }}
     >
-      <Helmet>
-        <title>{`Harris Geo - ${blog.frontmatter.title}`}</title>
-      </Helmet>
+      <SEO title={blog.frontmatter.title} />
       <ProgressBar progress={progress} />
       <Layout {...navData} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Container dark={darkMode}>
