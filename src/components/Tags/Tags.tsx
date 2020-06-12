@@ -29,6 +29,11 @@ export const pageQuery = graphql`
         home
         blogs
         iwomm
+        nodejs
+        react
+        javascript
+        talk
+        testing
         icon_dark {
           url
         }
@@ -72,10 +77,7 @@ const TagsPage = (props: any) => {
   })
 
   const tagTitle = (text: string): string => {
-    if (text === "iwomm") {
-      return copy.iwomm
-    }
-    return text.charAt(0).toUpperCase() + text.slice(1)
+    return copy[text.replace(".", "")]
   }
 
   const tag = tagTitle(pathTag)

@@ -13,6 +13,7 @@ export const SEO = ({ description, lang, meta, title }: SEOProps) => {
             title
             description
             author
+            image
           }
         }
       }
@@ -20,7 +21,7 @@ export const SEO = ({ description, lang, meta, title }: SEOProps) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  console.log(site.siteMetadata)
+  const image = site.siteMetadata.image
   return (
     <Helmet
       htmlAttributes={{
@@ -42,6 +43,10 @@ export const SEO = ({ description, lang, meta, title }: SEOProps) => {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: image,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -60,6 +65,10 @@ export const SEO = ({ description, lang, meta, title }: SEOProps) => {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          property: `twitter:image`,
+          content: image,
         },
       ].concat(meta)}
     />
