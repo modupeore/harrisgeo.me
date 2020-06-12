@@ -63,7 +63,12 @@ export const P = styled.p`
 export const TagWrapper = styled.div`
   font-size: 14px;
   display: flex;
+  width: 100%;
+  flex-wrap: wrap;
   align-items: baseline;
 `
 
-export const Tag = styled(TagLayout)``
+export const Tag = styled(TagLayout)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+`
