@@ -26,7 +26,7 @@ module.exports = {
         background_color: `#00b3b0`,
         theme_color: `#00b3b0`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
       },
     },
     {
@@ -50,7 +50,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "fonts",
-        path: `${__dirname}/src/fonts/`,
+        path: `${__dirname}/src/assets/fonts/`,
       },
     },
     "gatsby-transformer-remark",
