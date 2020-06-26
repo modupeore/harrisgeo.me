@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { tokens } from "../tokens"
+import { getBackgroundColor } from "./ProgressBar.utils"
 
 interface ProgressBarProps {
   progress: number
@@ -18,7 +19,10 @@ export const ProgressBarBar = styled.div.attrs(
   ({ progress }: ProgressBarProps) => ({
     style: { width: `${progress}%` },
   })
-)<ProgressBarProps>`
+)<ProgressBarProps>(
+  ({ progress }: ProgressBarProps) => `
   height: 100%;
-  background-color: ${tokens.hover};
+  transition: all 0.5s ease;
+  background-color: ${getBackgroundColor(progress)};
 `
+)

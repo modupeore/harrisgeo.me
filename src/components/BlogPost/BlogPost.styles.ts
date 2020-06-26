@@ -1,7 +1,7 @@
 import { H1 as H1Layout, Tag as TagLayout } from "../Layout"
 import { tokens } from "../tokens"
 import styled from "styled-components"
-import MerriweatherFontFace from "../../fonts/merriweather"
+import MerriweatherFontFace from "../../assets/fonts/merriweather"
 
 const font = "Merriweather"
 
@@ -33,7 +33,7 @@ export const PostContainer = styled.div<{ dark: boolean }>`
 
   > ol > li > a,
   > p > a {
-    color: ${(props) => (props.dark ? tokens.white : tokens.dark)};
+    color: ${props => (props.dark ? tokens.white : tokens.dark)};
     font-weight: 600;
     :hover {
       color: ${tokens.hover};

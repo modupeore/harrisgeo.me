@@ -18,6 +18,13 @@ export interface Tokens {
   white: string
   hover: string
   black: string
+  red: string
+  orangered: string
+  orange: string
+  lightorange: string
+  yellow: string
+  lightgreen: string
+  green: string
 }
 
 export const tokens: Tokens = {
@@ -40,4 +47,11 @@ export const tokens: Tokens = {
   white: "#fff",
   hover: "#00b3b0",
   black: "#000000",
+  red: "#ff0000",
+  orangered: "#ff4040",
+  orange: "#ff7f50",
+  lightorange: "#ffa500",
+  yellow: "#ffd700",
+  lightgreen: "#5ac18e",
+  green: "#008080",
 }
