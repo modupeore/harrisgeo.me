@@ -4,7 +4,13 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { SEOProps } from "./SEO.model"
 
-export const SEO = ({ description, lang, meta, title }: SEOProps) => {
+export const SEO = ({
+  description,
+  lang,
+  meta,
+  title,
+  seoBackground,
+}: SEOProps) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -21,7 +27,7 @@ export const SEO = ({ description, lang, meta, title }: SEOProps) => {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const image = site.siteMetadata.image
+  const image = seoBackground || site.siteMetadata.image
   return (
     <Helmet
       htmlAttributes={{

@@ -3,4 +3,5 @@ export interface SEOProps {
   lang: string
   meta: any
   title: string
+  seoBackground?: string
 }

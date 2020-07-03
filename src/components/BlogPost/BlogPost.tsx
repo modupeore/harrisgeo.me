@@ -22,6 +22,7 @@ export const blogPostQuery = graphql`
         path
         title
         tags
+        seoBackground
       }
     }
     prismic: prismicTitle {
@@ -73,7 +74,10 @@ const BlogPost = (props: any) => {
         setProgress((scrollTop * 100) / (scrollHeight - clientHeight))
       }}
     >
-      <SEO title={blog.frontmatter.title} />
+      <SEO
+        title={blog.frontmatter.title}
+        seoBackground={blog.frontmatter.seoBackground}
+      />
       <ProgressBar progress={progress} />
       <Layout {...navData} dark={darkMode} toggleDarkMode={toggleDarkMode}>
         <Container dark={darkMode}>
