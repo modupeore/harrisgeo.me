@@ -77,7 +77,10 @@ const TagsPage = (props: any) => {
   })
 
   const tagTitle = (text: string): string => {
-    return copy[text.replace(".", "")]
+    return (
+      copy[text.replace(".", "")] ||
+      `${text.charAt(0).toUpperCase()}${text.slice(1)}`
+    )
   }
 
   const tag = tagTitle(pathTag)
