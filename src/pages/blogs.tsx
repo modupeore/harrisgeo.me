@@ -67,7 +67,7 @@ const BlogsPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <SEO title="Blogs" />
+      <SEO title='Blogs' />
       <Layout
         {...dataObject.nav}
         dark={darkMode}

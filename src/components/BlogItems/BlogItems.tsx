@@ -15,20 +15,14 @@ export const BlogItems = ({ dark, title, blogs, preview }: any) => {
     navigate(path)
   }
 
-  const splitTags = (tags: string): string[] => {
-    return tags.split(",").map((tag) => {
-      return tag.replace(/ /g, "")
-    })
-  }
-
   return (
-    <Container dark={dark} id="blog">
+    <Container dark={dark} id='blog'>
       <H1>{title}</H1>
       {blogs.edges.map(({ node }: any, i: number) => {
         const {
           frontmatter: { path, title, description, date, tags },
         } = node
-        const tagsArray = splitTags(tags)
+
         return (
           <BlockWrapper key={i}>
             <Block onClick={() => handleClick(path)} dark={dark}>
@@ -37,11 +31,11 @@ export const BlogItems = ({ dark, title, blogs, preview }: any) => {
             </Block>
             <MiniWrapper>
               <Date>{date}</Date>
-              {tagsArray.map((tag: string, j: number) => (
+              {tags.map((tag: string, j: number) => (
                 <Tag
                   key={j}
                   dark={dark}
-                  onClick={(e) => {
+                  onClick={e => {
                     e.preventDefault()
                     handleClick(`/tags/${tag}`)
                   }}

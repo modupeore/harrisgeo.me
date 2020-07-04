@@ -22,7 +22,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then((res) => {
+  `).then(res => {
     if (res.errors) {
       return Promise.reject(res.errors)
     }
@@ -46,14 +46,12 @@ exports.createPages = ({ actions, graphql }) => {
     )
 
     // all tags flattened
-    allTags = allTags
-      .map((tag) => tag.split(",").map((t) => t.replace(/ /g, "")))
-      .flat()
+    allTags = allTags.flat()
 
     // take unique values only
     const tags = allTags.filter((a, b) => allTags.indexOf(a) === b)
 
-    tags.map((tag) => {
+    tags.map(tag => {
       createPage({
         path: `/tags/${tag}`,
         component: tagsTemplate,

@@ -62,9 +62,8 @@ const BlogPost = (props: any) => {
     sun: data.icon_light.url,
     moon: data.icon_dark.url,
   }
-
-  const splitTags = (tags: string): string[] =>
-    tags.split(",").map((t) => t.replace(/ /g, ""))
+  const splitTags = (tags: string[]): string[] =>
+    tags.map(t => t.replace(/ /g, ""))
 
   return (
     <Frame
@@ -107,7 +106,7 @@ const BlogPost = (props: any) => {
               ({ social_text, social_name, social_link }: any, i: number) => (
                 <P key={i}>
                   {social_text}&nbsp;
-                  <Link dark={darkMode} target="_blank" href={social_link}>
+                  <Link dark={darkMode} target='_blank' href={social_link}>
                     {social_name}
                   </Link>
                 </P>
