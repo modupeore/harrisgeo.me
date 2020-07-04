@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { tokens } from "../tokens"
 // TODO: use styled system instead of tokens
 import { layout, space, LayoutProps, SpaceProps } from "styled-system"
+import { selection, outline } from "../styleHelpers"
 
 interface StyledSystemProps extends LayoutProps, SpaceProps {}
 
@@ -17,11 +18,16 @@ export const Frame = styled.div<Dark>`
   position: fixed;
   top: 0;
   left: 0;
-  background: ${(props) => (props.dark ? tokens.dark : tokens.light)};
+  background: ${props => (props.dark ? tokens.dark : tokens.light)};
   height: 100%;
   width: 100%;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
+
+  * {
+    ${selection}
+    ${outline}
+  }
 `
 
 export const Body = styled.div<Dark>`
@@ -31,7 +37,7 @@ export const Body = styled.div<Dark>`
   font-family: "Montserrat", sans-serif;
   width: 100%;
   height: 100%;
-  color: ${(props) => (props.dark ? tokens.light : tokens.dark)};
+  color: ${props => (props.dark ? tokens.light : tokens.dark)};
 `
 
 export const Container = styled.div<Dark>`
@@ -39,7 +45,7 @@ export const Container = styled.div<Dark>`
   margin: ${tokens.spacingXl} auto;
   width: 800px;
   height: calc(100% - ${tokens.spacing3Xl});
-  background: ${(props) => (props.dark ? tokens.dark : tokens.light)};
+  background: ${props => (props.dark ? tokens.dark : tokens.light)};
 
   @media screen and (max-width: ${tokens.mobile}) {
     margin: auto;
@@ -67,7 +73,7 @@ export const Section = styled.div`
 `
 
 export const Link = styled.a<Dark>`
-  color: ${(props) => (props.dark ? tokens.light : tokens.dark)};
+  color: ${props => (props.dark ? tokens.light : tokens.dark)};
   font-weight: 500;
 
   &:hover {
@@ -127,7 +133,7 @@ export const Box = styled.div<Small>`
   padding: ${tokens.spacing} 0;
 
   @media screen and (max-width: ${tokens.mobile}) {
-    padding: ${(props) => (props.small ? 0 : 20)};
+    padding: ${props => (props.small ? 0 : 20)};
   }
 `
 
@@ -154,9 +160,9 @@ export const Tag = styled.a.attrs({ as: "button" })<Dark>`
   border: 1px solid black;
   font-size: 12px;
   font-weight: 600;
-  color: ${(props) => (props.dark ? tokens.dark : tokens.light)};
+  color: ${props => (props.dark ? tokens.dark : tokens.light)};
   border-radius: 5px;
-  background-color: ${(props) => (props.dark ? tokens.light : tokens.dark)};
+  background-color: ${props => (props.dark ? tokens.light : tokens.dark)};
   padding: ${tokens.spacingXs} ${tokens.spacingS};
   cursor: pointer;
 
