@@ -8,7 +8,7 @@ import { SEO } from "../SEO"
 export const pageQuery = graphql`
   {
     blogs: allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {

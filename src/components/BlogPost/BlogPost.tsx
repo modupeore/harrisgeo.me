@@ -12,6 +12,7 @@ import {
   Tag,
 } from "./BlogPost.styles"
 import { SEO } from "../SEO"
+import { reformatDate } from "../../helpers/reformatDate"
 
 export const blogPostQuery = graphql`
   query($path: String) {
@@ -63,7 +64,7 @@ const BlogPost = (props: any) => {
     moon: data.icon_dark.url,
   }
   const splitTags = (tags: string[]): string[] =>
-    tags.map(t => t.replace(/ /g, ""))
+    tags.map((t) => t.replace(/ /g, ""))
 
   return (
     <Frame
@@ -87,7 +88,7 @@ const BlogPost = (props: any) => {
           />
           <Footer>
             <P>
-              Date posted:&nbsp;<b>{blog.frontmatter.date}</b>
+              Date posted:&nbsp;<b>{reformatDate(blog.frontmatter.date)}</b>
             </P>
             <TagWrapper>
               Tags:&nbsp;
@@ -106,7 +107,7 @@ const BlogPost = (props: any) => {
               ({ social_text, social_name, social_link }: any, i: number) => (
                 <P key={i}>
                   {social_text}&nbsp;
-                  <Link dark={darkMode} target='_blank' href={social_link}>
+                  <Link dark={darkMode} target="_blank" href={social_link}>
                     {social_name}
                   </Link>
                 </P>

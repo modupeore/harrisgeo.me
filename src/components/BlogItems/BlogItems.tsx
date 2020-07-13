@@ -9,6 +9,7 @@ import {
   MiniWrapper,
   BlockWrapper,
 } from "./BlogItems.styles"
+import { reformatDate } from "../../helpers/reformatDate"
 
 export const BlogItems = ({ dark, title, blogs, preview }: any) => {
   const handleClick = (path: any) => {
@@ -16,7 +17,7 @@ export const BlogItems = ({ dark, title, blogs, preview }: any) => {
   }
 
   return (
-    <Container dark={dark} id='blog'>
+    <Container dark={dark} id="blog">
       <H1>{title}</H1>
       {blogs.edges.map(({ node }: any, i: number) => {
         const {
@@ -30,12 +31,12 @@ export const BlogItems = ({ dark, title, blogs, preview }: any) => {
               <Description>{description}</Description>
             </Block>
             <MiniWrapper>
-              <Date>{date}</Date>
+              <Date>{reformatDate(date)}</Date>
               {tags.map((tag: string, j: number) => (
                 <Tag
                   key={j}
                   dark={dark}
-                  onClick={e => {
+                  onClick={(e) => {
                     e.preventDefault()
                     handleClick(`/tags/${tag}`)
                   }}

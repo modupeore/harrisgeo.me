@@ -8,7 +8,7 @@ import { SEO } from "../components/SEO"
 export const pageQuery = graphql`
   {
     blogs: allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {
         node {
@@ -67,7 +67,7 @@ const BlogsPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <SEO title='Blogs' />
+      <SEO title="Blogs" />
       <Layout
         {...dataObject.nav}
         dark={darkMode}

@@ -7,7 +7,7 @@ exports.createPages = ({ actions, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(sort: { fields: [frontmatter___id], order: DESC }) {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
             frontmatter {
@@ -22,7 +22,7 @@ exports.createPages = ({ actions, graphql }) => {
         }
       }
     }
-  `).then(res => {
+  `).then((res) => {
     if (res.errors) {
       return Promise.reject(res.errors)
     }
@@ -51,7 +51,7 @@ exports.createPages = ({ actions, graphql }) => {
     // take unique values only
     const tags = allTags.filter((a, b) => allTags.indexOf(a) === b)
 
-    tags.map(tag => {
+    tags.map((tag) => {
       createPage({
         path: `/tags/${tag}`,
         component: tagsTemplate,

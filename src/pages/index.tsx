@@ -9,7 +9,7 @@ import { SEO } from "../components/SEO"
 export const pageQuery = graphql`
   {
     blogs: allMarkdownRemark(
-      sort: { fields: [frontmatter___id], order: DESC }
+      sort: { fields: [frontmatter___date], order: DESC }
       limit: 3
     ) {
       edges {
@@ -128,7 +128,7 @@ const IndexPage = (props: any) => {
 
   return (
     <Frame dark={darkMode}>
-      <SEO title='Home' />
+      <SEO title="Home" />
       <Layout
         {...dataObject.nav}
         dark={darkMode}
