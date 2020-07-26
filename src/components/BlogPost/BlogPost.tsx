@@ -22,6 +22,7 @@ export const blogPostQuery = graphql`
         date
         path
         title
+        description
         tags
         seoBackground
       }
@@ -76,6 +77,7 @@ const BlogPost = (props: any) => {
     >
       <SEO
         title={blog.frontmatter.title}
+        description={blog.frontmatter.description}
         seoBackground={blog.frontmatter.seoBackground}
       />
       <ProgressBar progress={progress} />

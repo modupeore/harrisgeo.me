@@ -11,6 +11,11 @@ export const PostContainer = styled.div<{ dark: boolean }>`
   margin: 50px 0;
   font-family: ${font};
   line-height: 2;
+
+  > h3 {
+    margin: 40px 0;
+  }
+
   > p > code,
   ol > li > code {
     background: none;
@@ -40,12 +45,21 @@ export const PostContainer = styled.div<{ dark: boolean }>`
     }
   }
 
+  img {
+    max-width: 800px;
+  }
+
   @media screen and (max-width: ${tokens.mobile}) {
     img {
-      width: 75%;
-      height: 75%;
+      max-width: 350px;
     }
   }
+  @media screen and (min-width: ${tokens.mobile}) and (max-width: ${tokens.tablet}) {
+    img {
+      max-width: 700px;
+    }
+  }
+
 `
 export const H1 = styled(H1Layout)`
   font-family: ${font};
