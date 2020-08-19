@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import {
   Wrapper,
   ProfilePhoto,
@@ -8,10 +8,10 @@ import {
   Link,
   Container,
   Icon,
-} from "../Layout";
-import { Parser } from "html-to-react";
+} from "../Layout"
+import { Parser } from "html-to-react"
 
-const parser = new Parser();
+const parser = new Parser()
 
 export const Main = (props: any) => {
   const {
@@ -30,7 +30,7 @@ export const Main = (props: any) => {
     twitterText,
     twitterImgDark,
     twitterImgLight,
-  } = props;
+  } = props
 
   return (
     <Container dark={dark} id="home">
@@ -68,5 +68,5 @@ export const Main = (props: any) => {
         </Bio>
       </Wrapper>
     </Container>
-  );
-};
+  )
+}
