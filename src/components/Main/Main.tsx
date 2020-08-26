@@ -7,7 +7,8 @@ import {
   Box,
   Link,
   Container,
-  Icon,
+  SocialMediaIcon,
+  IconsContainer,
 } from "../Layout"
 import { Parser } from "html-to-react"
 
@@ -20,14 +21,18 @@ export const Main = (props: any) => {
     currentJobLink,
     currentJobLinkText,
     dark,
-    github,
-    githubText,
     githubImgDark,
     githubImgLight,
+    liImgLight,
+    liImgDark,
+    devImgLight,
+    devImgDark,
     profilePhoto,
     title,
-    twitter,
-    twitterText,
+    githubUrl,
+    twitterUrl,
+    devUrl,
+    liUrl,
     twitterImgDark,
     twitterImgLight,
   } = props
@@ -46,24 +51,44 @@ export const Main = (props: any) => {
             </Link>
           </Box>
           <Box small>
-            <Link href={github} target="_blank" dark={dark}>
-              <Icon
-                src={dark ? githubImgLight : githubImgDark}
-                alt={githubText}
-                width={25}
-                height={25}
-                mr={10}
-              />
-            </Link>
-            <Link href={twitter} target="_blank" dark={dark}>
-              <Icon
-                src={dark ? twitterImgLight : twitterImgDark}
-                alt={twitterText}
-                width={25}
-                height={25}
-                ml={10}
-              />
-            </Link>
+            <IconsContainer>
+              <Link href={githubUrl} target="_blank" dark={dark}>
+                <SocialMediaIcon
+                  src={dark ? githubImgLight.url : githubImgDark.url}
+                  alt={dark ? githubImgLight.alt : githubImgDark.alt}
+                  width={30}
+                  height={30}
+                  mr={10}
+                />
+              </Link>
+              <Link href={twitterUrl} target="_blank" dark={dark}>
+                <SocialMediaIcon
+                  src={dark ? twitterImgLight.url : twitterImgDark.url}
+                  alt={dark ? twitterImgLight.alt : twitterImgDark.alt}
+                  width={30}
+                  height={30}
+                  ml={10}
+                />
+              </Link>
+              <Link href={devUrl} target="_blank" dark={dark}>
+                <SocialMediaIcon
+                  src={dark ? devImgLight.url : devImgDark.url}
+                  alt={dark ? devImgLight.alt : devImgDark.alt}
+                  width={30}
+                  height={30}
+                  ml={10}
+                />
+              </Link>
+              <Link href={liUrl} target="_blank" dark={dark}>
+                <SocialMediaIcon
+                  src={dark ? liImgLight.url : liImgDark.url}
+                  alt={dark ? liImgLight.alt : liImgDark.alt}
+                  width={30}
+                  height={30}
+                  ml={10}
+                />
+              </Link>
+            </IconsContainer>
           </Box>
         </Bio>
       </Wrapper>

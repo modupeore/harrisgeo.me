@@ -10,7 +10,7 @@ export const pageQuery = graphql`
   {
     blogs: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
+      limit: 2
     ) {
       edges {
         node {
@@ -54,28 +54,48 @@ export const pageQuery = graphql`
         current_job_link {
           url
         }
-        github_text {
-          text
-        }
-        github {
-          url
-        }
         github_icon_dark {
           url
+          alt
         }
         github_icon_light {
           url
-        }
-        twitter_text {
-          text
+          alt
         }
         twitter_icon_dark {
           url
+          alt
         }
         twitter_icon_light {
           url
+          url
         }
-        twitter {
+        li_icon_dark {
+          url
+          alt
+        }
+        li_icon_light {
+          url
+          alt
+        }
+        dev_icon_dark {
+          url
+          alt
+        }
+        dev_icon_light {
+          url
+          alt
+        }
+        github_link {
+          url
+        }
+        twitter_link {
+          url
+        }
+        dev_link {
+          url
+        }
+        li_link {
           url
         }
         blog_title {
@@ -107,14 +127,18 @@ const IndexPage = (props: any) => {
       currentJob: copy.current_job[0].text,
       currentJobLink: copy.current_job_link.url,
       currentJobLinkText: copy.current_job_link_text[0].text,
-      github: copy.github.url,
-      githubText: copy.github_text[0].text,
-      githubImgLight: copy.github_icon_light.url,
-      githubImgDark: copy.github_icon_dark.url,
-      twitter: copy.twitter.url,
-      twitterText: copy.twitter_text[0].text,
-      twitterImgLight: copy.twitter_icon_light.url,
-      twitterImgDark: copy.twitter_icon_dark.url,
+      githubImgLight: copy.github_icon_light,
+      githubImgDark: copy.github_icon_dark,
+      liImgDark: copy.li_icon_dark,
+      liImgLight: copy.li_icon_light,
+      devImgDark: copy.dev_icon_dark,
+      devImgLight: copy.dev_icon_light,
+      githubUrl: copy.github_link.url,
+      twitterUrl: copy.twitter_link.url,
+      devUrl: copy.dev_link.url,
+      liUrl: copy.li_link.url,
+      twitterImgLight: copy.twitter_icon_light,
+      twitterImgDark: copy.twitter_icon_dark,
     },
     blog: {
       title: copy.blog_title[0].text,
